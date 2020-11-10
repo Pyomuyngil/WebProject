@@ -3,6 +3,7 @@ import { Form, Input, Button} from 'semantic-ui-react'
 import Menu from "./menu.js";
 import fire from './config/fire';
 class Home extends Component{
+
   constructor(props)
   {
     super(props)

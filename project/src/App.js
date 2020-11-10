@@ -5,7 +5,9 @@ import {Button, Progress, Input, Image, Comment, Form, Header} from 'semantic-ui
 import fire from './config/fire';
 import Login from './login';
 import Home from './Home';
-
+import FaqLayout from './FAQ.js'
+import Board from './Board.js'
+import BoardWrite from './Write.js'
 class App extends Component{
 
   constructor(props)
@@ -36,6 +38,7 @@ componentDidMount(){
     return (
       <div className="App">
         { this.state.user ? (<Home/>) : (<Login/>) }
+
       </div>
 
 
