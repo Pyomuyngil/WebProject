@@ -2,7 +2,7 @@ import React from 'react'
 import {Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment} from 'semantic-ui-react'
 
-import Comments from "./Comment.js"
+import Comments from "./comment.js"
 
 const BoardWrite = () => (
   <div>
