@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
-import { Form, Input, Button} from 'semantic-ui-react'
-import Menu from "./menu.js";
+import { Container, Divider, Dropdown, Grid, Header, Image, Button,
+  List,  Menu,  Segment} from 'semantic-ui-react'
 import fire from './config/fire';
+import Comments from "./comment.js";
+import MenuClass from "./MenuClass.js";
 class Home extends Component{
 
   constructor(props)
   {
     super(props)
     this.state ={
-
+      user : {}
     }
   }
-  logout(){
-    fire.auth().signOut();
-  }
+
   render(){
 
     return(
-      <div>
+      <div classname= "topMenu">
 
-        <h1> 당신은 로그인에 성공하였습니다 ! </h1>
-        <Button onClick={this.logout}> Logout </Button>
-      </div>
-    )
+    <MenuClass />
+    </div>
+  );
   }
 }
 export default Home;

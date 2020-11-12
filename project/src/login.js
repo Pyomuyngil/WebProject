@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import fire from './config/fire';
-import {Button, Input, Form} from 'semantic-ui-react';
+import {Button, Form, Grid, Header, Image, Segment, Input} from 'semantic-ui-react';
 
 class Login extends Component{
   constructor(props)
@@ -46,26 +46,45 @@ class Login extends Component{
 
     return(
       <div>
-        <Form>
-          <Input
-          type="email"
-          id="email"
-          name ="email"
-          placeholder = "enter email address"
-          onChange = {this.handleChange}
-          value = {this.state.email}
-          />
-          <Input
-          name = "password"
-          type = "password"
-          onChange={this.handleChange}
-          id = "password"
-          placeholder = "enter password"
-          value = {this.state.password}
-          />
-          <Button onClick={this.login}> Login < /Button>
-          <Button onClick = {this.signup}> Signup </Button>
-        </Form>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' color='teal' textAlign='center'>
+              <Image src='/logo.png' /> Log-in to your account
+            </Header>
+            <Form size='large'>
+              <Segment stacked>
+                <Form.Input
+                fluid icon='user'
+                iconPosition='left'
+                placeholder='E-mail address'
+                type="email"
+                id="email"
+                name ="email"
+                onChange = {this.handleChange}
+                value = {this.state.email}
+                />
+
+                <Form.Input
+                  fluid icon='lock'
+                  iconPosition='left'
+                  placeholder='Password'
+                  type = "password"
+                  id = "password"
+                  name = "password"
+                  onChange={this.handleChange}
+                  value = {this.state.password}
+                />
+
+                <Button onClick={this.login} color='teal' fluid size='large'>
+                  Login
+                </Button>
+              </Segment>
+            </Form>
+            <Button onClick = {this.signup} color='teal' fluid size='large'>
+              Sign Up
+            </Button>
+          </Grid.Column>
+        </Grid>
       </div>
     )
   }

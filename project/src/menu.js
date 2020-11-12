@@ -1,10 +1,17 @@
 import React from 'react'
 import {Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment} from 'semantic-ui-react'
+import fire from './config/fire';
+import Comments from "./comment.js";
+import Home from "./Home.js";
 
-import Comments from "./comment.js"
+
+
+
 
 const FixedMenuLayout = () => (
+
+
   <div>
     <Menu size='small' fixed='top' inverted>
       <Container>
@@ -36,7 +43,7 @@ const FixedMenuLayout = () => (
         </Dropdown>
 
         <Menu.Item>
-          <Button primary>LOGOUT</Button>
+          <Button onClick={Home.logout()}>LOGOUT</Button>
         </Menu.Item>
 
       </Container>

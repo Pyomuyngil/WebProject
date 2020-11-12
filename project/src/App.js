@@ -5,6 +5,7 @@ import {Button, Progress, Input, Image, Comment, Form, Header} from 'semantic-ui
 import fire from './config/fire';
 import Login from './login';
 import Home from './Home';
+import Menu from './menu.js';
 import FaqLayout from './FAQ.js'
 import Board from './Board.js'
 import BoardWrite from './Write.js'
