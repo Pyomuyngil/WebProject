@@ -1,27 +1,40 @@
 import React, { Component } from 'react';
+import ReactDom from 'react-dom';
 import { Container, Divider, Dropdown, Grid, Header, Image, Button,
-  List,  Menu,  Segment} from 'semantic-ui-react'
+  List,   Segment} from 'semantic-ui-react'
 import fire from './config/fire';
 import Comments from "./comment.js";
 import MenuClass from "./MenuClass.js";
-class Home extends Component{
+import Find from "./Find.js";
+import AfterTravle from "./AfterTravle.js";
+import FreeBoard from "./FreeBoard.js";
+import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
-  constructor(props)
-  {
-    super(props)
-    this.state ={
-      user : {}
-    }
-  }
-
-  render(){
+const MainHome = () => {
+  <div>
+  <h1>home </h1>
+  </div>
+}
+function Home(){
 
     return(
+      <Router>
       <div classname= "topMenu">
+      <MenuClass />
 
-    <MenuClass />
-    </div>
+      <Switch>
+
+      <Route path ="/">
+      <Redirect to ="/Home"/>
+      </Route>
+      <Route path ="/Find" component ={ Find } />
+      <Route path = "/AfterTravle" component = {AfterTravle} />
+      <Route path = "/FreeBoard" component = {FreeBoard} />
+      </Switch>
+      </div>
+      </Router>
   );
-  }
+
+
 }
 export default Home;
