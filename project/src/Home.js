@@ -10,29 +10,30 @@ import AfterTravle from "./AfterTravle.js";
 import FreeBoard from "./FreeBoard.js";
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
-const MainHome = () => {
-  <div>
-  <h1>home </h1>
-  </div>
+const MainHome = () =>{
+
 }
 function Home(){
 
     return(
       <Router>
       <div classname= "topMenu">
-      <MenuClass />
-
-      <Switch>
-
-      <Route path ="/">
-      <Redirect to ="/Home"/>
-      </Route>
-      <Route path ="/Find" component ={ Find } />
-      <Route path = "/AfterTravle" component = {AfterTravle} />
-      <Route path = "/FreeBoard" component = {FreeBoard} />
-      </Switch>
+      <div>
+      <h1>home </h1>
       </div>
-      </Router>
+        <MenuClass />
+        <Route path ="/">
+        <Redirect to ="/Home"/>
+        </Route>
+        <Route path ="/Find" component ={ Find } />
+        <Route path = "/AfterTravle" component = {AfterTravle} />
+        <Route path = "/FreeBoard" component = {FreeBoard} />
+
+
+      </div>
+        </Router>
+
+
   );
 
 
