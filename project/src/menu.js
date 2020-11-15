@@ -5,25 +5,37 @@ import fire from './config/fire';
 import Comments from "./comment.js";
 import Home from "./Home.js";
 
+import {Link, BroswerRouter as Router,Switch,Route} from "react-router-dom";
+
+function logout(){
+    fire.auth().signOut();
+}
 
 
 
+function menu(){
 
-const FixedMenuLayout = () => (
-
-
+return (
   <div>
+  <nav>
     <Menu size='small' fixed='top' inverted>
       <Container>
         <Menu.Item as='a' header>
           <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
           같이가요
         </Menu.Item>
+        <Link to='/Home'>
         <Menu.Item as='a' style={{ marginLeft: '5em' }}>홈</Menu.Item>
+        </Link>
+        <Link to = '/Find'>
         <Menu.Item as='a'>국내동행찾기</Menu.Item>
+        </Link>
+        <Link to = '/AfterTravle'>
         <Menu.Item as='a'>여행후기</Menu.Item>
+        </Link>
+        <Link to = '/FreeBoard'>
         <Menu.Item as='a'>자유게시판</Menu.Item>
-
+        </Link>
         <Dropdown item simple text='문의 및 신고'>
           <Dropdown.Menu>
             <Dropdown.Item>List Item</Dropdown.Item>
@@ -43,13 +55,13 @@ const FixedMenuLayout = () => (
         </Dropdown>
 
         <Menu.Item>
-          <Button onClick={Home.logout()}>LOGOUT</Button>
+          <Button onClick="logout">LOGOUT</Button>
         </Menu.Item>
 
       </Container>
     </Menu>
-
-    <Container text style={{ marginTop: '7em' }}>
+</nav>
+    <Container>text style={{ marginTop: '7em' }}>
       <Header as='h1'>Semantic UI React Fixed Template</Header>
       <Comments/>
 
@@ -108,6 +120,8 @@ const FixedMenuLayout = () => (
       </Container>
     </Segment>
   </div>
-)
+);
+}
 
-export default FixedMenuLayout
+
+export default menu;
