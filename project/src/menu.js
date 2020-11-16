@@ -30,7 +30,7 @@ return (
         <Link to = '/Find'>
         <Menu.Item as='a'>국내동행찾기</Menu.Item>
         </Link>
-        <Link to = '/AfterTravle'>
+        <Link to = '/AfterTravel'>
         <Menu.Item as='a'>여행후기</Menu.Item>
         </Link>
         <Link to = '/FreeBoard'>
