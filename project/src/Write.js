@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment} from 'semantic-ui-react'
 
-import Comments from "./comment.js"
 import FreeBoard from "./FreeBoard.js"
 
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";

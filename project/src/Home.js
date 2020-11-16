@@ -3,7 +3,6 @@ import ReactDom from 'react-dom';
 import { Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,   Segment} from 'semantic-ui-react'
 import fire from './config/fire';
-import Comments from "./comment.js";
 import MenuClass from "./MenuClass.js";
 import Find from "./Find.js";
 import AfterTravel from "./AfterTravel.js";

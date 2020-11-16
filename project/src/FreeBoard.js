@@ -5,7 +5,6 @@ import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-
 import BoardWrite from "./Write.js"
 import Board from "./Board.js"
 
-
 function FreeBoard(){
 
     return(
