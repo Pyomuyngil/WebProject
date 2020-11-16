@@ -8,8 +8,11 @@ import Board from "./Board.js"
 
 function FreeBoard(){
 
+
     return(
-      <Router>
+
+
+
       <div>
       <Container text style={{ marginTop: '7em' }}>
         <Header as='h1'>자유게시판</Header>
@@ -43,14 +46,25 @@ function FreeBoard(){
             </tr>
           </tbody>
         </table>
-        <Link to = 'FreeBoard/Write'>
-          <button class="ui blue button">글쓰기</button>
-        </Link>
-      </Container>
-        <Route path = "/FreeBoard/Write" component = {BoardWrite} />
 
-      </div>
-        </Router>
+
+        <Link to='/Write'>
+          <Button class="ui blue button">
+          글쓰기
+          </Button>
+        </Link>
+
+    </Container>
+
+
+
+
+
+
+    </div>
+
+
+
 
 
   );

@@ -8,6 +8,7 @@ import MenuClass from "./MenuClass.js";
 import Find from "./Find.js";
 import AfterTravle from "./AfterTravle.js";
 import FreeBoard from "./FreeBoard.js";
+import Write from "./Write.js";
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
 const MainHome = () =>{
@@ -28,6 +29,7 @@ function Home(){
         <Route path ="/Find" component ={ Find } />
         <Route path = "/AfterTravle" component = {AfterTravle} />
         <Route path = "/FreeBoard" component = {FreeBoard} />
+        <Route path ="/Write" component ={ Write} />
 
 
       </div>
