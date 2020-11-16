@@ -2,7 +2,6 @@ import React from 'react'
 import {Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment} from 'semantic-ui-react'
 import fire from './config/fire';
-import Comments from "./comment.js";
 import Home from "./Home.js";
 
 import {Link, BroswerRouter as Router,Switch,Route} from "react-router-dom";
@@ -30,7 +29,7 @@ return (
         <Link to = '/Find'>
         <Menu.Item as='a'>국내동행찾기</Menu.Item>
         </Link>
-        <Link to = '/AfterTravle'>
+        <Link to = '/AfterTravel'>
         <Menu.Item as='a'>여행후기</Menu.Item>
         </Link>
         <Link to = '/FreeBoard'>
@@ -63,7 +62,6 @@ return (
 </nav>
     <Container>text style={{ marginTop: '7em' }}>
       <Header as='h1'>Semantic UI React Fixed Template</Header>
-      <Comments/>
 
       <Image src='/images/wireframe/media-paragraph.png' style={{ marginTop: '2em' }} />
       <Image src='/images/wireframe/paragraph.png' style={{ marginTop: '2em' }} />

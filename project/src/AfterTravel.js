@@ -6,16 +6,12 @@ import BoardWrite from "./Write.js"
 import Board from "./Board.js"
 
 
-function Find(){
+function AfterTravel(){
   return (
 <Router>
   <div>
     <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>국내동행찾기
-      <Link to = 'FreeBoard/Write'>
-        <button class="ui blue button">글쓰기</button>
-      </Link>
-    </Header>
+      <Header as='h1'>여행후기</Header>
       <div class="ui link cards">
         <div class="card">
           <div class="image">
@@ -110,10 +106,13 @@ function Find(){
         </div>
       </div>
     </div>
+    <Link to = 'FreeBoard/Write'>
+      <button class="ui blue button">글쓰기</button>
+    </Link>
   </Container>
   <Route path = "/FreeBoard/Write" component = {BoardWrite} />
   </div>
 </Router>
   );
 }
-export default Find;
+export default AfterTravel;

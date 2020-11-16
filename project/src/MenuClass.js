@@ -5,7 +5,6 @@ import {Link, BroswerRouter as Router,Switch,Route} from "react-router-dom";
 import fire from './config/fire.js';
 import "firebase/auth";
 import firebase from "firebase/app";
-import Comments from "./comment.js";
 import Home from "./Home.js";
 import FAQclass from "./FAQclass.js";
 
@@ -27,7 +26,7 @@ const  MenuClass = () =>{
           <Link to = '/Find'>
           <Menu.Item as='a'>국내동행찾기</Menu.Item>
           </Link>
-          <Link to = '/AfterTravle'>
+          <Link to = '/AfterTravel'>
           <Menu.Item as='a'>여행후기</Menu.Item>
           </Link>
           <Link to = '/FreeBoard'>
