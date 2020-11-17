@@ -15,13 +15,13 @@ function FreeBoard(){
       <div>
       <Container text style={{ marginTop: '7em' }}>
         <Header as='h1'>자유게시판</Header>
-        <table class="ui selectable inverted table">
+        <table className="ui selectable inverted table">
           <thead>
             <tr>
               <th>번호</th>
               <th>제목</th>
               <th>글쓴이</th>
-              <th class="right aligned">날짜</th>
+              <th className="right aligned">날짜</th>
             </tr>
           </thead>
           <tbody>
@@ -29,26 +29,26 @@ function FreeBoard(){
               <td>1</td>
               <td>아아아아아아아</td>
               <td>명일</td>
-              <td class="right aligned">2020/11/10</td>
+              <td className="right aligned">2020/11/10</td>
             </tr>
             <tr>
               <td>2</td>
               <td>플옵 2차전 보러감</td>
               <td>정욱</td>
-              <td class="right aligned">2020/11/10</td>
+              <td className="right aligned">2020/11/10</td>
             </tr>
             <tr>
               <td>3</td>
               <td>고추</td>
               <td>현국</td>
-              <td class="right aligned">2020/11/10</td>
+              <td className="right aligned">2020/11/10</td>
             </tr>
           </tbody>
         </table>
 
 
         <Link to='/Write'>
-          <Button class="ui blue button">
+          <Button className="ui blue button">
           글쓰기
           </Button>
         </Link>

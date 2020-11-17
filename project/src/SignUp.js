@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import fire from './config/fire';
-import Sign from './SignUp';
 import {Button, Form, Grid, Header, Image, Segment, Input} from 'semantic-ui-react';
-import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
-class Login extends Component{
+class Signup extends Component{
+
   constructor(props)
   {
     super(props);
@@ -13,7 +12,8 @@ class Login extends Component{
     this.signup = this.signup.bind(this);
     this.state ={
       email : "",
-      password : ""
+      password : "",
+      nickname : ""
     }
 
 
@@ -35,10 +35,10 @@ class Login extends Component{
 
   signup(e){
     e.preventDefault();
-    fire.auth().createUserWithEmailAndPassword(this.state.email,this.state.password).then(user=>
+    fire.auth().createUserWithEmailAndPassword(this.state.email,this.state.password, this.state.nickname).then(user=>
     {
       if(user){
-        this.handleSignup(this.state.email);
+        this.handleSignup(this.state.email, this.state.nickname);
       }
 
 
@@ -49,10 +49,11 @@ class Login extends Component{
     });
   }
 
-    handleSignup( useremail){
+    handleSignup( useremail, usernickname){
       var userId = fire.auth().currentUser;
       fire.database().ref('users/' + userId.uid).set({
-        email : useremail
+        email : useremail,
+        nickname : usernickname
       });
     }
 
@@ -64,18 +65,10 @@ class Login extends Component{
 
     })
   }
-
-
-
-
-
-
-
   render(){
 
 
     return(
-
       <div>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
@@ -106,26 +99,30 @@ class Login extends Component{
                   value = {this.state.password}
                 />
 
+                <Form.Input
+                fluid icon='nickname'
+                iconPosition='left'
+                placeholder='닉네임을 입력해주세요'
+                type="text"
+                id = "text"
+                name ="text"
+                onChange = {this.handleChange}
+                value = {this.state.nickname}
+                />
+
                 <Button onClick={this.login} color='teal' fluid size='large'>
                   Login
                 </Button>
               </Segment>
             </Form>
-
-
             <Button onClick = {this.signup} color='teal' fluid size='large'>
               Sign Up
             </Button>
-
-
           </Grid.Column>
         </Grid>
-
       </div>
-
-
-
     )
   }
 }
-export default Login;
+
+export default Signup;

@@ -9,6 +9,8 @@ import Menu from './menu.js';
 import FaqLayout from './FAQ.js'
 import Board from './Board.js'
 import BoardWrite from './Write.js'
+import SignUp from './SignUp.js'
+import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 class App extends Component{
 
   constructor(props)
@@ -20,9 +22,9 @@ class App extends Component{
   }
 
 
-componentDidMount(){
-  this.authListner();
-}
+  componentDidMount(){
+    this.authListner();
+  }
   authListner(){
     fire.auth().onAuthStateChanged((user)=>{
       if(user)
@@ -34,13 +36,24 @@ componentDidMount(){
       }
     })
   }
+
+
+
   render()
   {
     return (
+
       <div className="App">
-        { this.state.user ? (<Home/>) : (<Login/>) }
+        {
+
+           this.state.user ?  (<Home/>) : (<Login/>)
+       }
 
       </div>
+
+
+
+
 
 
 
