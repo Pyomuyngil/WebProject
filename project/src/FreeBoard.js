@@ -7,7 +7,6 @@ import Board from "./Board.js"
 
 function FreeBoard(){
 
-
     return(
 
 
@@ -25,24 +24,6 @@ function FreeBoard(){
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>아아아아아아아</td>
-              <td>명일</td>
-              <td className="right aligned">2020/11/10</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>플옵 2차전 보러감</td>
-              <td>정욱</td>
-              <td className="right aligned">2020/11/10</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>고추</td>
-              <td>현국</td>
-              <td className="right aligned">2020/11/10</td>
-            </tr>
           </tbody>
         </table>
 

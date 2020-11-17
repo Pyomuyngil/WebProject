@@ -9,7 +9,7 @@ function BoardWrite(){
 
 
 const history = useHistory();
-var [titletext, setTitletext] = useState("");
+var [titletext, setTitletext ] = useState("");
 var [contentstext , setContentstext] = useState("");
 
 const titleHandler = (e) =>
@@ -27,7 +27,6 @@ const contentsHandler = (e) =>
 const saveData = (e)  =>
 {
  e.preventDefault();
-
   if(titletext === '' || contentstext ==='')
   {
 
@@ -35,11 +34,12 @@ const saveData = (e)  =>
   else {
     var title = titletext;
     var contents = contentstext;
+    var writeDate = Date.now();
     var userId = fire.auth().currentUser;
     fire.database().ref('users/'+userId.uid+'/자유게시판').push().set({
       title : title,
-      contents : contents
-
+      contents : contents,
+      writeDate : writeDate,
     });
 
     setTitletext('');
