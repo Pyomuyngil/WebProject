@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
-  List,  Menu,  Segment} from 'semantic-ui-react'
+  List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
 import Board from "./Board.js"
@@ -109,6 +109,11 @@ function AfterTravel(){
     <Link to = 'FreeBoard/Write'>
       <button class="ui blue button">글쓰기</button>
     </Link>
+
+    <div>
+    <Pagination defaultActivePage={5} totalPages={5} />
+    </div>
+
   </Container>
   <Route path = "/FreeBoard/Write" component = {BoardWrite} />
   </div>

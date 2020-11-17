@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import {Container, Divider, Dropdown, Grid, Header, Image, Button,
-  List,  Menu,  Segment} from 'semantic-ui-react'
+  List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
 import Board from "./Board.js"
 
 function FreeBoard(){
 
-
     return(
-
 
 
       <div>
@@ -39,13 +37,27 @@ function FreeBoard(){
             </tr>
             <tr>
               <td>3</td>
-              <td>고추</td>
+              <td>;;;;;;;</td>
               <td>현국</td>
+              <td className="right aligned">2020/11/10</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>에ㅔ...</td>
+              <td>으에,,,</td>
+              <td className="right aligned">2020/11/10</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>에ㅔ...</td>
+              <td>으에,,,</td>
               <td className="right aligned">2020/11/10</td>
             </tr>
           </tbody>
         </table>
-
+        <div>
+        <Pagination defaultActivePage={5} totalPages={5} />
+        </div>
 
         <Link to='/Write'>
           <Button className="ui blue button">
@@ -56,13 +68,7 @@ function FreeBoard(){
     </Container>
 
 
-
-
-
-
     </div>
-
-
 
 
 
