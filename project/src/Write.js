@@ -69,7 +69,9 @@ const saveData = (e)  =>
     <Button.Group>
     <Button onClick={saveData} positive>Save</Button>
     <Button.Or />
+    <Link to='/FreeBoard'>
     <Button>Cancel</Button>
+    </Link>
     </Button.Group>
 
     </Container>
