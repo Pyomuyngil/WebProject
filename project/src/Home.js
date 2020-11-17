@@ -7,12 +7,14 @@ import MenuClass from "./MenuClass.js";
 import Find from "./Find.js";
 import AfterTravel from "./AfterTravel.js";
 import FreeBoard from "./FreeBoard.js";
+import Write from "./Write.js";
+import SignUp from './SignUp.js';
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
-const MainHome = () =>{
 
-}
 function Home(){
+
+
 
     return(
       <Router>
@@ -21,15 +23,19 @@ function Home(){
       <h1>home </h1>
       </div>
         <MenuClass />
-        <Route path ="/">
+        <Route exact path ="/">
         <Redirect to ="/Home"/>
         </Route>
         <Route path ="/Find" component ={ Find } />
         <Route path = "/AfterTravel" component = {AfterTravel} />
         <Route path = "/FreeBoard" component = {FreeBoard} />
+        <Route path ="/Write" component ={ Write} />
+
+
 
 
       </div>
+
         </Router>
 
 
