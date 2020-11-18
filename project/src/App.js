@@ -6,7 +6,7 @@ import fire from './config/fire';
 import Login from './login';
 import Home from './Home';
 import Menu from './menu.js';
-import FaqLayout from './FAQ.js'
+import FaqLayout from './FaqLayout.js'
 import Board from './Board.js'
 import BoardWrite from './Write.js'
 import SignUp from './SignUp.js'
