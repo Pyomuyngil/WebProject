@@ -3,7 +3,6 @@ import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
-import Board from "./Board.js"
 
 
 function AfterTravel(){
@@ -11,7 +10,13 @@ function AfterTravel(){
 <Router>
   <div>
     <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>여행후기</Header>
+      <Header as='h1'>여행후기
+      <Link to='/FreeBoard/Write'>
+        <Button style={{ marginLeft: '29em' }} className="ui blue button">
+          글쓰기
+        </Button>
+        </Link>
+      </Header>
       <div class="ui link cards">
         <div class="card">
           <div class="image">

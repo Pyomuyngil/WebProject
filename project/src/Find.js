@@ -3,7 +3,6 @@ import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
-import Board from "./Board.js"
 
 
 function Find(){
@@ -13,7 +12,9 @@ function Find(){
     <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>국내동행찾기
       <Link to = 'FreeBoard/Write'>
-        <button class="ui blue button">글쓰기</button>
+        <Button style={{ marginLeft: '25em' }} className="ui blue button">
+          글쓰기
+        </Button>
       </Link>
     </Header>
       <div class="ui link cards">

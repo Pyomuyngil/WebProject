@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import {Container, Divider, Dropdown, Grid, Header, Image, Button,
-  List,  Menu,  Segment} from 'semantic-ui-react'
+import {Container, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
-import Board from "./Board.js"
 
 function FreeBoard(){
-
-    return(
-
-
-
-      <div>
+  return(
+    <div>
       <Container text style={{ marginTop: '7em' }}>
-        <Header as='h1'>자유게시판</Header>
+        <Header as='h1'>
+          자유게시판
+          <Link to='/FreeBoard/Write'>
+            <Button style={{ marginLeft: '33em' }} className="ui blue button">
+              글쓰기
+            </Button>
+          </Link>
+        </Header>
         <table className="ui selectable inverted table">
           <thead>
             <tr>
@@ -26,27 +27,8 @@ function FreeBoard(){
           <tbody>
           </tbody>
         </table>
-
-
-        <Link to='/Write'>
-          <Button className="ui blue button">
-          글쓰기
-          </Button>
-        </Link>
-
-    </Container>
-
-
-
-
-
-
+      </Container>
     </div>
-
-
-
-
-
   );
 }
 
