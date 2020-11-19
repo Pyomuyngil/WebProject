@@ -1,5 +1,7 @@
 import React from 'react'
 import {Container, Header} from 'semantic-ui-react'
+import {Link, BrowserRouter as Router, Route, Redirect} from "react-router-dom";
+
 
 const FaqLayout = () => (
   <div>
@@ -15,19 +17,13 @@ const FaqLayout = () => (
         <tbody>
           <tr>
             <td>1</td>
-            <td>페이지 어케 연결해</td>
+            <Link to='/FaqOne'>
+            <td>'같이가요'는 어떤 사이트인가요?</td>
+            </Link>
           </tr>
           <tr>
             <td>2</td>
-            <td>뭔가 한거같지가 않아</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>고추</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>아스날</td>
+            <td>홈페이지 이용방법은 어떻게 되나요?</td>
           </tr>
         </tbody>
       </table>
