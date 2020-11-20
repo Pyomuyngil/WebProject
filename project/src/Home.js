@@ -8,6 +8,7 @@ import AfterTravel from "./AfterTravel.js";
 import FreeBoard from "./FreeBoard.js";
 import FaqLayout from "./FaqLayout.js";
 import FaqOne from "./FaqOne.js";
+import FaqTwo from "./FaqTwo.js";
 import Write from "./Write.js";
 import SignUp from './SignUp.js';
 import {Link, BrowserRouter as Router, Route, Redirect} from "react-router-dom";
@@ -26,6 +27,7 @@ function Home(){
           <Route path ="/Write" component ={Write} />
           <Route path ="/FaqLayout" component ={FaqLayout} />
           <Route path ="/FaqOne" component ={FaqOne} />
+          <Route path ="/FaqTwo" component ={FaqTwo} />
         </div>
       </Router>
   );

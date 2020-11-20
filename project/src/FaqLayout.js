@@ -23,7 +23,9 @@ const FaqLayout = () => (
           </tr>
           <tr>
             <td>2</td>
+            <Link to='/FaqTwo'>
             <td>홈페이지 이용방법은 어떻게 되나요?</td>
+            </Link>
           </tr>
         </tbody>
       </table>
