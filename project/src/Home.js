@@ -11,6 +11,11 @@ import FaqOne from "./FaqOne.js";
 import FaqTwo from "./FaqTwo.js";
 import Write from "./Write.js";
 import SignUp from './SignUp.js';
+
+import CustomGmap from './CustomGmap.js';
+
+
+
 import {Link, BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 
 function Home(){
@@ -21,7 +26,7 @@ function Home(){
           <MenuClass />
           <Route exact path ="/Home" component ={Homepage} />
           <Redirect to ="/Home" />
-          <Route path ="/Find" component ={Find} />
+          <Route path ="/CustomGmap" component ={CustomGmap} />
           <Route path ="/AfterTravel" component = {AfterTravel} />
           <Route path ="/FreeBoard" component = {FreeBoard} />
           <Route path ="/Write" component ={Write} />

@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.search{
+  position : absolute;
+  top : 10rem;
+  left : 50%;
+  transform : translate(-25%);
+  width : 50%;
+  max_width : 400px;
+  z-index: 10;
+}
+.search input{
+  padding: 0.5rem;
+  font-size :1.0rem;
+  width : 50%;
+}
