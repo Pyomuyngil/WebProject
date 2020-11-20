@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import {Container, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
-
+import LoadData from "./LoadData.js"
+import fire from './config/fire';
 function FreeBoard(){
   return(
     <div>
       <Container text style={{ marginTop: '7em' }}>
         <Header as='h1'>
           자유게시판
-          <Link to='/FreeBoard/Write'>
+          <Link to='/Write'>
             <Button style={{ marginLeft: '33em' }} className="ui blue button">
               글쓰기
             </Button>

@@ -5,6 +5,7 @@ import fire from './config/fire';
 import FreeBoard from "./FreeBoard.js"
 
 import { Link,BrowserRouter as Router,Switch,Route,Redirect, useHistory  } from "react-router-dom";
+
 function BoardWrite(){
 
 
@@ -27,6 +28,7 @@ const contentsHandler = (e) =>
 const saveData = (e)  =>
 {
  e.preventDefault();
+
   if(titletext === '' || contentstext ==='')
   {
 
@@ -39,17 +41,15 @@ const saveData = (e)  =>
     fire.database().ref('users/'+userId.uid+'/자유게시판').push().set({
       title : title,
       contents : contents,
-      writeDate : writeDate,
+      writeDate : writeDate
     });
-
     setTitletext('');
     setContentstext('');
     history.goBack();
   }
-
-
-
 }
+
+
   return (
     <form>
     <div>
