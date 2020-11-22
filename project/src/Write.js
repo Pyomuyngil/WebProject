@@ -1,6 +1,5 @@
 import React, { Component, useState } from 'react';
-import {Container, Divider, Dropdown, Grid, Header, Image, Button,
-  List,  Menu,  Segment} from 'semantic-ui-react'
+import {Container, Divider, Dropdown, Grid, Header, Image, Button, Input} from 'semantic-ui-react'
 import fire from './config/fire';
 import FreeBoard from "./FreeBoard.js"
 
@@ -59,7 +58,7 @@ const saveData = (e)  =>
     <div class ='ui form'>
     <div class="field">
     <label>제목</label>
-    <textarea id = "titlearea" rows="1" onChange ={titleHandler}></textarea>
+    <Input fluid id = "titlearea" onChange ={titleHandler}></Input>
     </div>
     <div class="field">
     <label>내용</label>

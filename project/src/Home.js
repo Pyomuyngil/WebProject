@@ -9,6 +9,7 @@ import FreeBoard from "./FreeBoard.js";
 import FaqLayout from "./FaqLayout.js";
 import FaqOne from "./FaqOne.js";
 import FaqTwo from "./FaqTwo.js";
+import SendMail from "./SendMail.js";
 import Write from "./Write.js";
 import SignUp from './SignUp.js';
 
@@ -33,6 +34,7 @@ function Home(){
           <Route path ="/FaqLayout" component ={FaqLayout} />
           <Route path ="/FaqOne" component ={FaqOne} />
           <Route path ="/FaqTwo" component ={FaqTwo} />
+          <Route path ="/SendMail" component ={SendMail} />
         </div>
       </Router>
   );
