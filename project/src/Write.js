@@ -42,6 +42,17 @@ const saveData = (e)  =>
       contents : contents,
       writeDate : writeDate
     });
+
+    var selectedBoard = this.props.selectedBoard;
+    var data = {
+       brdtitle: title,
+       brdId : userId
+     }
+          if (selectedBoard.brdno) {
+              data.brdno = selectedBoard.brdno
+              data.brddate = selectedBoard.brddate
+          }
+    this.props.onSaveData(data);
     setTitletext('');
     setContentstext('');
     history.goBack();
