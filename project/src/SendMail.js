@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Container, Divider, Dropdown, Grid, Header, Image, Button, Input} from 'semantic-ui-react'
 
 import FreeBoard from "./FreeBoard.js"
-import FormHandle from "./form-submission-handler.js"
 
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 function SendMail(){
