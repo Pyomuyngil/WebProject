@@ -7,37 +7,54 @@ import BoardWrite from "./Write.js"
 function Homepage(){
   return (
 <Router>
+<div class ='ui form' style={{ marginTop: '8em', marginLeft: '2em' }}>
+<Grid>
+<Grid.Row>
+<Grid.Column width={3}>
   <div>
-    <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>홈페이지</Header>
       <div class="ui link cards">
         <div class="card">
-          <div class="image">
-            <img src="/images/avatar2/large/matthew.png" />
-          </div>
           <div class="content">
-            <div class="header">Matt Giampietro</div>
+            <div class="header">'abcd'님 어서오세요!</div>
             <div class="meta">
-              <a>Friends</a>
+              <a>회원</a>
             </div>
             <div class="description">
-              Matthew is an interior designer living in New York.
+              어서오시라구요 꼴받게하지말고
             </div>
-          </div>
-          <div class="extra content">
-            <span class="right floated">
-            Joined in 2013
-            </span>
-            <span>
-            <i class="user icon"></i>
-            75 Friends
-            </span>
           </div>
         </div>
     </div>
-
-  </Container>
-  <Route path = "/FreeBoard/Write" component = {BoardWrite} />
+  </div>
+  </Grid.Column>
+  <Grid.Column width={9}>
+  <table className="ui selectable inverted table">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th className="right aligned">날짜</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <table className="ui selectable inverted table">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th className="right aligned">날짜</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  </Grid.Column>
+  </Grid.Row>
+  </Grid>
   </div>
 </Router>
   );
