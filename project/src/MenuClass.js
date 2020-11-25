@@ -29,7 +29,7 @@ const MenuClass = () =>{
             <Link to = '/FaqLayout'>
               <Menu.Item as='a'>이용FAQ</Menu.Item>
             </Link>
-            <Link to = '/FAQclass'>
+            <Link to = '/SendMail'>
               <Menu.Item as='a'>문의 및 신고</Menu.Item>
             </Link>
             <Menu.Item>
