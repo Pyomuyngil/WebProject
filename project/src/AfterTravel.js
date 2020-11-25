@@ -24,12 +24,6 @@ function AfterTravel(){
           </div>
           <div class="content">
             <div class="header">Matt Giampietro</div>
-            <div class="meta">
-              <a>Friends</a>
-            </div>
-            <div class="description">
-              Matthew is an interior designer living in New York.
-            </div>
           </div>
           <div class="extra content">
             <span class="right floated">
@@ -47,12 +41,6 @@ function AfterTravel(){
           </div>
           <div class="content">
             <div class="header">Molly</div>
-          <div class="meta">
-            <span class="date">Coworker</span>
-          </div>
-          <div class="description">
-            Molly is a personal assistant living in Paris.
-          </div>
         </div>
         <div class="extra content">
           <span class="right floated">
@@ -70,12 +58,6 @@ function AfterTravel(){
         </div>
         <div class="content">
           <div class="header">Elyse</div>
-          <div class="meta">
-            <a>Coworker</a>
-          </div>
-          <div class="description">
-            Elyse is a copywriter working in New York.
-          </div>
         </div>
         <div class="extra content">
           <span class="right floated">
@@ -93,12 +75,6 @@ function AfterTravel(){
         </div>
         <div class="content">
           <div class="header">lala</div>
-          <div class="meta">
-            <a>Coworker</a>
-          </div>
-          <div class="description">
-            lala is a copywriter working in New York.
-          </div>
         </div>
         <div class="extra content">
           <span class="right floated">
@@ -111,9 +87,6 @@ function AfterTravel(){
         </div>
       </div>
     </div>
-    <Link to = 'FreeBoard/Write'>
-      <button class="ui blue button">글쓰기</button>
-    </Link>
 
     <div>
     <Pagination defaultActivePage={5} totalPages={5} />

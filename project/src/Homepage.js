@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
-  List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
+  List,  Menu,  Segment, Pagination, Table} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
 
@@ -28,30 +28,40 @@ function Homepage(){
   </div>
   </Grid.Column>
   <Grid.Column width={9}>
-  <table className="ui selectable inverted table">
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>글쓴이</th>
-        <th className="right aligned">날짜</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  <table className="ui selectable inverted table">
-    <thead>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>글쓴이</th>
-        <th className="right aligned">날짜</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+  <Header as='h2'>국내동행찾기 최근 글</Header>
+  <Table celled selectable>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>
+          <div>'abcd'님 어서오세요!</div>
+          <div><a>회원</a></div>
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Jamie</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Jill</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+    <Header as='h2'>여행후기 최근 글</Header>
+    <Table celled selectable>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>
+            <div>'abcd'님 어서오세요!</div>
+            <div><a>회원</a></div>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Jamie</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Jill</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
   </Grid.Column>
   </Grid.Row>
   </Grid>

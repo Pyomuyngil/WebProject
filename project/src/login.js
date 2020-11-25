@@ -17,8 +17,6 @@ class Login extends Component{
     }
 
 
-
-
   }
   login(e){
     e.preventDefault();
@@ -29,7 +27,6 @@ class Login extends Component{
       console.log(err);
     })
   }
-
 
 
 
@@ -57,18 +54,12 @@ class Login extends Component{
     }
 
 
-
   handleChange(e){
     this.setState({
       [e.target.name] : e.target.value
 
     })
   }
-
-
-
-
-
 
 
   render(){
@@ -80,7 +71,7 @@ class Login extends Component{
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              <Image src='/logo.png' /> Log-in to your account
+              국내여행 동행 구할 땐! "같이가요"
             </Header>
             <Form size='large'>
               <Segment stacked>
@@ -107,23 +98,19 @@ class Login extends Component{
                 />
 
                 <Button onClick={this.login} color='teal' fluid size='large'>
-                  Login
+                  로그인
                 </Button>
               </Segment>
             </Form>
 
-
             <Button onClick = {this.signup} color='teal' fluid size='large'>
-              Sign Up
+              회원가입
             </Button>
-
 
           </Grid.Column>
         </Grid>
 
       </div>
-
-
 
     )
   }
