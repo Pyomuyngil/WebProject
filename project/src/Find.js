@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
-import BoardWrite from "./Write.js"
+import FindWrite from "./FindWrite.js"
 
 
 function Find(){
@@ -11,7 +11,7 @@ function Find(){
   <div>
     <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>국내동행찾기
-      <Link to = 'FreeBoard/Write'>
+      <Link to = 'FindWrite'>
         <Button style={{ marginLeft: '25em' }} className="ui blue button">
           글쓰기
         </Button>
@@ -115,7 +115,7 @@ function Find(){
     <Pagination defaultActivePage={5} totalPages={5} />
     </div>
   </Container>
-  <Route path = "/FreeBoard/Write" component = {BoardWrite} />
+  <Route path = "/FreeBoard/Write" component = {FindWrite} />
   </div>
 </Router>
   );

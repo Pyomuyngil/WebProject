@@ -5,6 +5,7 @@ import Homepage from "./Homepage.js";
 import MenuClass from "./MenuClass.js";
 import Find from "./Find.js";
 import AfterTravel from "./AfterTravel.js";
+import ATWrite from "./AfterTravelWrite.js";
 import FreeBoard from "./FreeBoard.js";
 import FaqLayout from "./FaqLayout.js";
 import FaqOne from "./FaqOne.js";
@@ -35,6 +36,7 @@ function Home(){
           <Route path ="/FaqOne" component ={FaqOne} />
           <Route path ="/FaqTwo" component ={FaqTwo} />
           <Route path ="/SendMail" component ={SendMail} />
+          <Route path ="/ATWrite" component = {ATWrite} />
         </div>
       </Router>
   );

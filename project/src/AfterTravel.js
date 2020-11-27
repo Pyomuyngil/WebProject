@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
-import BoardWrite from "./Write.js"
-
+import ATWrite from "./AfterTravelWrite.js"
+import Person from './ss.png'
 
 function AfterTravel(){
   return (
-<Router>
+
   <div>
     <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>여행후기
-      <Link to='/FreeBoard/Write'>
+      <Link to='/ATWrite'>
         <Button style={{ marginLeft: '29em' }} className="ui blue button">
           글쓰기
         </Button>
@@ -20,7 +20,7 @@ function AfterTravel(){
       <div class="ui link cards">
         <div class="card">
           <div class="image">
-            <img src="/images/avatar2/large/matthew.png" />
+            <img src={Person} />
           </div>
           <div class="content">
             <div class="header">Matt Giampietro</div>
@@ -37,7 +37,7 @@ function AfterTravel(){
         </div>
         <div class="card">
           <div class="image">
-            <img src="/images/avatar2/large/molly.png" />
+            <img src="ss.png" />
           </div>
           <div class="content">
             <div class="header">Molly</div>
@@ -54,7 +54,7 @@ function AfterTravel(){
       </div>
       <div class="card">
         <div class="image">
-          <img src="/images/avatar2/large/elyse.png" />
+          <img src="ss.png" />
         </div>
         <div class="content">
           <div class="header">Elyse</div>
@@ -71,7 +71,7 @@ function AfterTravel(){
       </div>
       <div class="card">
         <div class="image">
-          <img src="/images/avatar2/large/elyse.png" />
+          <img src="ss.png" />
         </div>
         <div class="content">
           <div class="header">lala</div>
@@ -93,9 +93,7 @@ function AfterTravel(){
     </div>
 
   </Container>
-  <Route path = "/FreeBoard/Write" component = {BoardWrite} />
   </div>
-</Router>
   );
 }
 export default AfterTravel;
