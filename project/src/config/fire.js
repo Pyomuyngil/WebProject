@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
-var dateFormat = require('dateformat');
+//var dateFormat = require('dateformat');
 
 var firebaseConfig = {
    apiKey: "AIzaSyDAnG8H-CnhCorWeh0R1WPv1jB2Z3xcSEQ",
