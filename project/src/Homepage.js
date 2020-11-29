@@ -4,6 +4,7 @@ import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
 
+import ImageUpload from "./ImageUpload.js"
 function Homepage(){
   return (
 <Router>
@@ -65,6 +66,7 @@ function Homepage(){
   </Grid.Column>
   </Grid.Row>
   </Grid>
+  <ImageUpload />
   </div>
 </Router>
   );

@@ -35,7 +35,11 @@ const saveData = (e)  =>
   else {
     var title = titletext;
     var contents = contentstext;
-    var writeDate = Date.now();
+    var today = new Date();
+    var year = today.getFullYear(); // 년도
+    var month = today.getMonth() + 1;  // 월
+    var date = today.getDate();  // 날짜
+    var writeDate = year + "-" + month + "-" + date
     var userId = fire.auth().currentUser;
     fire.database().ref('자유게시판').push().set({
       userId : userId.uid,

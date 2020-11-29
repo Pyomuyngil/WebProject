@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import {Container, Divider, Dropdown, Grid, Header, Image, Button, Input} from 'semantic-ui-react'
 import fire from './config/fire';
 import AfterTravel from "./AfterTravel.js"
-
+import ImageUpload from "./ImageUpload.js"
 import { Link,BrowserRouter as Router,Switch,Route,Redirect, useHistory  } from "react-router-dom";
 
 function AfterTravelWrite(){
@@ -67,6 +67,7 @@ const saveData = (e)  =>
     <label>내용</label>
     <textarea id ="contentsarea" rows='20' onChange = {contentsHandler}></textarea>
     </div>
+    <ImageUpload />
     </div>
     <Button.Group>
     <Button onClick={saveData} positive>Save</Button>

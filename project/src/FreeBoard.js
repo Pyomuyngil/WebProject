@@ -9,8 +9,8 @@ function FreeBoard(){
 
    const [title,setTitle] = useState([]);
    const [contents,setContents] = useState([]);
-   const [date, setDate] = useState([]);
-
+   const [writeDate, setDate] = useState([]);
+   const [email, setEmail] = useState([]);
 
 
 
@@ -28,7 +28,8 @@ function FreeBoard(){
           console.log(childSnapshot);
           setTitle(title => [...title, childSnapshot.val(),]);
           setContents(contents => [...contents, childSnapshot.val(),]);
-          setDate(date => [...date,childSnapshot.val(),]);
+          setDate(writeDate => [...writeDate,childSnapshot.val(),]);
+          setEmail(email => [...email,childSnapshot.val(),]);
           });
 
 
@@ -54,21 +55,33 @@ function FreeBoard(){
           </Header>
 
           <div>
+          <table className="ui selectable inverted table">
+            <thead>
+              <tr>
+                <th>제목</th>
+                <th>내용</th>
+                <th>작성자</th>
+                <th className="right aligned">날짜</th>
+              </tr>
+            </thead>
+            <tbody>
             {title.map((item) =>{
+              return(
+              <tr>
+              <td>{item.title}</td>
+              <td>{item.contents}</td>
+              <td>{item.email}</td>
+              <td  className="right aligned">{item.writeDate}</td>
 
-            return(
-              <div>
-              <h3>제목{item.title}</h3>
-              <h3>내용{item.contents}</h3>
-              <h3>날짜{item.date}</h3>
-              <h3>-----------------</h3>
-
-              </div>
+              </tr>
             )
 
 
           })}
-            </div>
+          </tbody>
+          </table>
+
+                </div>
         </Container>
 
       </div>

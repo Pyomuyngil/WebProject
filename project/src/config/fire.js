@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
+import "firebase/storage";
 //var dateFormat = require('dateformat');
 
 var firebaseConfig = {
@@ -15,6 +16,9 @@ var firebaseConfig = {
    measurementId: "G-7YLN2ZD2YF"
  };
  const fire = firebase.initializeApp(firebaseConfig);
+ const storage = firebase.storage();
  export var database = firebase.database();
  export const auth = firebase.auth();
- export default fire;
+ export {
+   storage, fire as default
+ }
