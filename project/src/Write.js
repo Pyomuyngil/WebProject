@@ -37,7 +37,8 @@ const saveData = (e)  =>
     var contents = contentstext;
     var writeDate = Date.now();
     var userId = fire.auth().currentUser;
-    fire.database().ref('users/'+userId.uid+'/자유게시판').push().set({
+    fire.database().ref('자유게시판').push().set({
+      email : userId.email,
       title : title,
       contents : contents,
       writeDate : writeDate
