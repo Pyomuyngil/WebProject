@@ -38,6 +38,7 @@ const saveData = (e)  =>
     var writeDate = Date.now();
     var userId = fire.auth().currentUser;
     fire.database().ref('users/'+userId.uid+'/자유게시판').push().set({
+      
       title : title,
       contents : contents,
       writeDate : writeDate
