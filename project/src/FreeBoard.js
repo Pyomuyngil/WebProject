@@ -3,8 +3,8 @@ import {Container, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import BoardWrite from "./Write.js"
 import BoardItem from "./Boarditem.js"
-import fire from './config/fire';
 
+import fire from './config/fire';
 class FreeBoard extends Component {
   state = {
        maxNo: 1,
@@ -32,10 +32,24 @@ class FreeBoard extends Component {
         this.setState({selectedBoard:row});
     }
 
+    render(){
+          const data = () => {
+            var userId = fire.auth().currentUser.uid;
+            var newPostKey = fire.database().ref().child('자유게시판').push().key;
+            fire.database().ref('자유게시판' + newPostKey).on('value', function(e){
+              var usrData = data.val();
+              var keys = Object.keys(usrData);
+              firedata(e.val().title, e.val().contents, e.val().email, e.val().writeDate)
+             })
+           }
 
-
-  render(){
-    const { boards} = this.state;
+           function firedata(title, contents, email, writeDate){
+               var title = title
+               var contents = contents
+               var email = email
+               var date = writeDate
+               return title, contents, email, date
+             }
 
     return(
       <div>
@@ -58,15 +72,17 @@ class FreeBoard extends Component {
               </tr>
             </thead>
             <tbody>
-              {
-                boards.map(row =>
-                            (<BoardItem key={row.brdno} row={row} onSelectRow={this.handleSelectRow} />)
-              )
-            }
+            <tr>
+              <td>1</td>
+              <td>{firedata()}</td>
+            </tr>
             </tbody>
           </table>
+
         </Container>
+
       </div>
+
     );
   }
 
