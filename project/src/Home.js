@@ -14,7 +14,7 @@ import SendMail from "./SendMail.js";
 import Write from "./Write.js";
 import SignUp from './SignUp.js';
 
-import CustomGmap from './CustomGmap.js';
+import GoogleMap from './GoogleMap.js';
 
 
 
@@ -28,7 +28,7 @@ function Home(){
           <MenuClass />
           <Route exact path ="/Home" component ={Homepage} />
           <Redirect to ="/Home" />
-          <Route path ="/CustomGmap" component ={CustomGmap} />
+          <Route path ="/GoogleMap" component ={GoogleMap} />
           <Route path ="/AfterTravel" component = {AfterTravel} />
           <Route path ="/FreeBoard" component = {FreeBoard} />
           <Route path ="/Write" component ={Write} />
