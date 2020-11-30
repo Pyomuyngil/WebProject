@@ -53,6 +53,25 @@ const saveData = (e)  =>
     setContentstext('');
     history.goBack();
   }
+
+  var query = fire.database().ref('자유게시판');
+
+  const upListener = query.on("value" , snapshot =>
+      {
+        snapshot.forEach(function(childSnapshot)
+        {
+          fire.database().ref('자유게시판/' + childSnapshot.key).update({
+            key : childSnapshot.key
+          });
+        }
+      );
+
+
+     });
+     return () => {
+           query.off('value', upListener);
+         };
+
 }
 
 

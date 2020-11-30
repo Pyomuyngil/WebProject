@@ -11,6 +11,7 @@ function FreeBoard(){
    const [contents,setContents] = useState([]);
    const [writeDate, setDate] = useState([]);
    const [email, setEmail] = useState([]);
+   const [key, setKey] = useState([]);
 
 
 
@@ -24,13 +25,16 @@ function FreeBoard(){
         {
           snapshot.forEach(function(childSnapshot)
           {
-
           console.log(childSnapshot);
+          console.log(childSnapshot.val().title);
+          console.log(childSnapshot.key);
           setTitle(title => [...title, childSnapshot.val(),]);
           setContents(contents => [...contents, childSnapshot.val(),]);
           setDate(writeDate => [...writeDate,childSnapshot.val(),]);
           setEmail(email => [...email,childSnapshot.val(),]);
-          });
+          setKey(key => [...key,childSnapshot.val(),]);
+          }
+        );
 
 
        });
@@ -59,7 +63,6 @@ function FreeBoard(){
             <thead>
               <tr>
                 <th>제목</th>
-                <th>내용</th>
                 <th>작성자</th>
                 <th className="right aligned">날짜</th>
               </tr>
@@ -68,15 +71,11 @@ function FreeBoard(){
             {title.map((item) =>{
               return(
               <tr>
-              <td>{item.title}</td>
-              <td>{item.contents}</td>
+              <td width="55%">{item.title}</td>
               <td>{item.email}</td>
-              <td  className="right aligned">{item.writeDate}</td>
-
+              <td className="right aligned">{item.writeDate}</td>
               </tr>
             )
-
-
           })}
           </tbody>
           </table>
