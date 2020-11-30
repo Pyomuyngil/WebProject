@@ -3,15 +3,13 @@ import {Container, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
 import fire from './config/fire';
-function FreeBoard(){
+function BoardRead(){
 
    const [title,setTitle] = useState([]);
    const [contents,setContents] = useState([]);
    const [writeDate, setDate] = useState([]);
    const [email, setEmail] = useState([]);
    const [key, setKey] = useState([]);
-
-
 
 
    React.useEffect(() =>{
@@ -46,40 +44,28 @@ function FreeBoard(){
       <div>
         <Container text style={{ marginTop: '7em' }}>
           <Header as='h1'>
-            자유게시판
-            <Link to='/BoardWrite'>
-              <Button style={{ marginLeft: '33em' }} className="ui blue button">
-                글쓰기
-              </Button>
-            </Link>
+            글 정보
           </Header>
-          <Router>
           <div>
-          <table className="ui selectable inverted table">
+
+          <table class="ui selectable inverted table">
             <thead>
-              <tr>
-                <th>제목</th>
-                <th>작성자</th>
-                <th className="right aligned">날짜</th>
-              </tr>
-            </thead>
-            <tbody>
             {title.map((item) =>{
               return(
-              <Link to={'/'+item.key}>
               <tr>
-              <td width="55%">{item.title}</td>
-              <td>{item.email}</td>
-              <td className="right aligned">{item.writeDate}</td>
+                <th>{item.title}</th>
               </tr>
-              </Link>
             )
-          })}
-          </tbody>
+            })}
+            </thead>
           </table>
+          <Link to = '/FreeBoard'>
+            <Button style={{ marginTop: '1em' }} className="ui blue button">
+              뒤로가기
+            </Button>
+          </Link>
 
-                </div>
-                </Router>
+          </div>
         </Container>
       </div>
 
@@ -88,4 +74,4 @@ function FreeBoard(){
 
 }
 
-export default FreeBoard;
+export default BoardRead;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment, Pagination, Table} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
-import BoardWrite from "./Write.js"
+import BoardWrite from "./BoardWrite.js"
 
 import ImageUpload from "./ImageUpload.js"
 function Homepage(){

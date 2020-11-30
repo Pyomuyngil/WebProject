@@ -7,7 +7,7 @@ import Login from './login';
 import Home from './Home';
 import Menu from './menu.js';
 import FaqLayout from './FaqLayout.js'
-import BoardWrite from './Write.js'
+import BoardWrite from './BoardWrite.js'
 import SignUp from './SignUp.js'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 class App extends Component{

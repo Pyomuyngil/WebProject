@@ -11,7 +11,7 @@ import FaqLayout from "./FaqLayout.js";
 import FaqOne from "./FaqOne.js";
 import FaqTwo from "./FaqTwo.js";
 import SendMail from "./SendMail.js";
-import Write from "./Write.js";
+import BoardWrite from "./BoardWrite.js";
 import SignUp from './SignUp.js';
 
 import GoogleMap from './GoogleMap.js';
@@ -31,7 +31,7 @@ function Home(){
           <Route path ="/GoogleMap" component ={GoogleMap} />
           <Route path ="/AfterTravel" component = {AfterTravel} />
           <Route path ="/FreeBoard" component = {FreeBoard} />
-          <Route path ="/Write" component ={Write} />
+          <Route path ="/BoardWrite" component ={BoardWrite} />
           <Route path ="/FaqLayout" component ={FaqLayout} />
           <Route path ="/FaqOne" component ={FaqOne} />
           <Route path ="/FaqTwo" component ={FaqTwo} />
