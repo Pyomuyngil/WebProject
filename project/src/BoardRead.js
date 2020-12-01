@@ -49,22 +49,25 @@ function BoardRead() {
 
     return(
       <div>
+      {title.map((item) =>{
+        return(
         <Container text style={{ marginTop: '7em' }}>
           <Header as='h1'>
             글 정보
           </Header>
           <div>
-          <table>
+          <table class="ui selectable inverted table">
             <thead>
-            {title.map((item) =>{
-              return(
               <tr>
-                <th>{item.title}</th>
-                <th>{item.email}</th>
-                <th>{item.contents}</th>
+                <th>제목 : {item.title}</th>
+                <th className="right aligned">작성자 : {item.email}</th>
               </tr>
-            )
-            })}
+              <tr>
+                <th colspan="2" className="right aligned">작성일시 : {item.writeDate}</th>
+              </tr>
+              <tr>
+                <th colspan="2">내용 : {item.contents}</th>
+              </tr>
             </thead>
           </table>
           <Link to = '/FreeBoard'>
@@ -75,6 +78,8 @@ function BoardRead() {
 
           </div>
         </Container>
+      )
+      })}
       </div>
 
     );

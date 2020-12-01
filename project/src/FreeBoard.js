@@ -54,7 +54,6 @@ function FreeBoard(){
               </Button>
             </Link>
           </Header>
-          <Router>
           <div>
           <table className="ui selectable inverted table">
             <thead>
@@ -67,14 +66,12 @@ function FreeBoard(){
             <tbody>
             {title.map((item) =>{
               return(
-              <Link to={'/'+item.key}>
+
               <tr>
-              <td width="55%">{item.title}</td>
-              <td>{item.email}</td>
-              <td className="right aligned">{item.writeDate}</td>
+              <td fix width="55%"><Link to={'/'+item.key}>{item.title}</Link></td>
+              <td width="20%"><Link to={'/'+item.key}>{item.email}</Link></td>
+              <td className="right aligned"><Link to={'/'+item.key}>{item.writeDate}</Link></td>
               </tr>
-              <Route path ={'/'+item.key} component = {BoardRead} />
-              </Link>
 
 
             )
@@ -83,7 +80,6 @@ function FreeBoard(){
           </table>
 
                 </div>
-                </Router>
         </Container>
       </div>
 
