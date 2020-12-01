@@ -3,13 +3,17 @@ import {Container, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
 import fire from './config/fire';
-function BoardRead(){
+
+function BoardRead() {
 
    const [title,setTitle] = useState([]);
    const [contents,setContents] = useState([]);
    const [writeDate, setDate] = useState([]);
    const [email, setEmail] = useState([]);
    const [key, setKey] = useState([]);
+   const urlname1 = window.location.pathname;
+   var urlname = urlname1.replace('/', '');
+   console.log(urlname);
 
 
    React.useEffect(() =>{
@@ -22,11 +26,14 @@ function BoardRead(){
           snapshot.forEach(function(childSnapshot)
           {
           console.log(childSnapshot);
+          console.log(urlname);
+          if(urlname == childSnapshot.val().key) {
           setTitle(title => [...title, childSnapshot.val(),]);
           setContents(contents => [...contents, childSnapshot.val(),]);
           setDate(writeDate => [...writeDate,childSnapshot.val(),]);
           setEmail(email => [...email,childSnapshot.val(),]);
           setKey(key => [...key,childSnapshot.val(),]);
+        }
           }
         );
 
@@ -47,13 +54,14 @@ function BoardRead(){
             글 정보
           </Header>
           <div>
-
-          <table class="ui selectable inverted table">
+          <table>
             <thead>
             {title.map((item) =>{
               return(
               <tr>
                 <th>{item.title}</th>
+                <th>{item.email}</th>
+                <th>{item.contents}</th>
               </tr>
             )
             })}
