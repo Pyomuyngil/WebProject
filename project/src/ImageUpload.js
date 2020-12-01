@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import storage from './config/fire';
+import {storage, fire} from './config/fire';
 import {Button} from 'semantic-ui-react'
 
 class ImageUpload extends Component{

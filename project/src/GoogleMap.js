@@ -45,31 +45,60 @@ export default function App() {
   });
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
-const [location, setLocation] = React.useState([]);
-function getGeo(lat,lng){
+  const [location, setLocation] = React.useState([]);
+  const [tags , setTags] = React.useState([]);
 
 
-  Geocode.fromLatLng( lat, lng).then( response =>
+
+const removeTags = indexToRemove =>{
+  setTags(tags.filter((_,index) => index !== indexToRemove));
+  setMarkers(markers.filter((_,index)=> index !== indexToRemove));
+}
+
+function addTags(event, response)
+{
+
+
+  if(event.nb.type === 'click')
+  {
+
+    setTags((current) =>[...current,response.results[0].formatted_address]);
+  }
+};
+
+
+function getGeo(e){
+
+
+  Geocode.fromLatLng( e.latLng.lat(), e.latLng.lng()).then( response =>
     {
+      setMarkers((current) => [
+        ...current,
+        {
+          lat: e.latLng.lat(),
+          lng: e.latLng.lng(),
+          time: new Date(),
+          location : response.results[0].formatted_address,
+
+        },
+      ]);
+      addTags(e, response);
 
 
-        setLocation(response.results[0].formatted_address);
 
     });
 
 
+
 };
 
-  const onMapClick = React.useCallback((e) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        time: new Date(),
-      },
-    ]);
-  }, []);
+const onMapClick = React.useCallback((e) => {
+
+  getGeo(e);
+
+
+}, []);
+
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -111,7 +140,6 @@ function getGeo(lat,lng){
             position={{ lat: marker.lat, lng: marker.lng }}
             onClick={() => {
               setSelected(marker);
-              getGeo(marker.lat,marker.lng);
             }}
 
           />
@@ -126,13 +154,27 @@ function getGeo(lat,lng){
           >
             <div>
               <h2>
-                {location}
+                {selected.location}
               </h2>
               <p>Spotted {formatRelative(selected.time, new Date())}</p>
             </div>
           </InfoWindow>
         ) : null}
+
+        <div>
+        </div>
       </GoogleMap>
+      <div>
+        <ul>
+        {tags.map((tag, index) =>(
+          <li key = {index}>
+          <span>{tag}</span>
+          <i id ="column" onClick={() => removeTags(index)}>       close</i>
+          </li>
+        ))}
+
+          </ul>
+      </div>
     </div>
   );
 }
@@ -153,7 +195,7 @@ function Locate({ panTo }) {
         );
       }}
     >
-      <img src="/compass.svg" alt="compass" />
+      <img src="/compass.png" alt="compass" />
     </button>
   );
 }
@@ -172,7 +214,7 @@ function Search({ panTo }) {
     },
   });
 
-  // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
+
 
   const handleInput = (e) => {
     setValue(e.target.value);
