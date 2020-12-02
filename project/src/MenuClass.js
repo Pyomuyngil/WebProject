@@ -17,7 +17,7 @@ const MenuClass = () =>{
             <Link to='/Home'>
               <Menu.Item as='a' style={{ marginLeft: '5em' }}>홈</Menu.Item>
             </Link>
-            <Link to = '/GoogleMap'>
+            <Link to = '/Find'>
               <Menu.Item as='a'>국내동행찾기</Menu.Item>
             </Link>
             <Link to = '/AfterTravel'>

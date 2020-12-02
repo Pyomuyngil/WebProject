@@ -4,6 +4,7 @@ import fire from './config/fire';
 import Homepage from "./Homepage.js";
 import MenuClass from "./MenuClass.js";
 import Find from "./Find.js";
+import FindWrite from "./FindWrite.js";
 import AfterTravel from "./AfterTravel.js";
 import ATWrite from "./AfterTravelWrite.js";
 import FreeBoard from "./FreeBoard.js";
@@ -74,7 +75,9 @@ function Home(){
           <MenuClass />
           <Route exact path ="/Home" component ={Homepage} />
           <Redirect to ="/Home" />
-          <Route path ="/GoogleMap" component ={GoogleMap} />
+          <Route path ="/Find" component ={Find} />
+          <Route path ="/FindWrite" component = {FindWrite} />
+          <Route path ="/GoogleMap" component = {GoogleMap} />
           <Route path ="/AfterTravel" component = {AfterTravel} />
           <Route path ="/FreeBoard" component = {FreeBoard} />
           <Route path ="/BoardWrite" component ={BoardWrite} />

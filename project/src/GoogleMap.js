@@ -20,13 +20,17 @@ import { formatRelative } from "date-fns";
 import Geocode from "react-geocode";
 import "@reach/combobox/styles.css";
 import mapStyles from "./mapStyles";
-
+import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
+  List,  Menu,  Segment, Pagination, Table} from 'semantic-ui-react';
+import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
 Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "50vh",
+  height: "75vh",
   width: "700px",
+  marginLeft : "50px",
+  marginTop : "25px",
 };
 const options = {
   styles: mapStyles,
@@ -37,8 +41,7 @@ const center = {
   lat: 36.621159,
   lng: 127.074172,
 };
-
-export default function App() {
+export default function App(){
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
     libraries,
@@ -47,7 +50,6 @@ export default function App() {
   const [selected, setSelected] = React.useState(null);
   const [location, setLocation] = React.useState([]);
   const [tags , setTags] = React.useState([]);
-
 
 
 const removeTags = indexToRemove =>{
@@ -114,7 +116,13 @@ const onMapClick = React.useCallback((e) => {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
+
+
+
+
+    <Grid>
+    <Grid.Row>
+      <Grid.Column width={9}>
       <h1>
         Bears{" "}
         <span role="img" aria-label="tent">
@@ -134,13 +142,15 @@ const onMapClick = React.useCallback((e) => {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-        {markers.map((marker) => (
+        {markers.map((marker ,index) => (
           <Marker
             key={`${marker.lat}-${marker.lng}`}
             position={{ lat: marker.lat, lng: marker.lng }}
+            label = {`${index+1}`}
             onClick={() => {
               setSelected(marker);
             }}
+
 
           />
         ))}
@@ -164,10 +174,18 @@ const onMapClick = React.useCallback((e) => {
         <div>
         </div>
       </GoogleMap>
+    </Grid.Column>
+    <Grid.Column width={4}>
+      <div className="arrayLo">
+
       <div>
+      <h1>여행지 목록  <Link to ='FindWrite' value={{markers,setMarkers}}><Button>저장</Button></Link><Link to ='FindWrite'><Button>뒤로가기</Button></Link> </h1>
+      </div>
+
         <ul>
         {tags.map((tag, index) =>(
-          <li key = {index}>
+          <li key = {index} style={{listStyleType : "decimal"}}>
+
           <span>{tag}</span>
           <i id ="column" onClick={() => removeTags(index)}>       close</i>
           </li>
@@ -175,7 +193,13 @@ const onMapClick = React.useCallback((e) => {
 
           </ul>
       </div>
-    </div>
+      </Grid.Column>
+      </Grid.Row>
+      </Grid>
+
+
+
+
   );
 }
 
@@ -210,7 +234,7 @@ function Search({ panTo }) {
   } = usePlacesAutocomplete({
     requestOptions: {
       location: { lat: () => 43.6532, lng: () => -79.3832 },
-      radius: 100 * 1000,
+      radius: 100 * 10,
     },
   });
 

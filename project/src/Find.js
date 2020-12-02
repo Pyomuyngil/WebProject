@@ -7,11 +7,10 @@ import FindWrite from "./FindWrite.js"
 
 function Find(){
   return (
-<Router>
   <div>
     <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>국내동행찾기
-      <Link to = 'FindWrite'>
+      <Link to = '/FindWrite'>
         <Button style={{ marginLeft: '25em' }} className="ui blue button">
           글쓰기
         </Button>
@@ -115,9 +114,7 @@ function Find(){
     <Pagination defaultActivePage={5} totalPages={5} />
     </div>
   </Container>
-  <Route path = "/FreeBoard/Write" component = {FindWrite} />
   </div>
-</Router>
   );
 }
 export default Find;

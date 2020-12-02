@@ -14,7 +14,7 @@ code {
 .search{
   position : absolute;
   top : 10rem;
-  left : 50%;
+  left : 40%;
   transform : translate(-25%);
   width : 50%;
   max_width : 400px;
@@ -23,5 +23,9 @@ code {
 .search input{
   padding: 0.5rem;
   font-size :1.0rem;
-  width : 50%;
+  width : 100%;
+}
+.arrayLo{
+  position :absolute;
+  top : 10rem;
 }
