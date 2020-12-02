@@ -14,7 +14,7 @@ import SendMail from "./SendMail.js";
 import BoardWrite from "./BoardWrite.js";
 import BoardRead from "./BoardRead.js";
 import SignUp from './SignUp.js';
-
+import App from './App.js';
 import GoogleMap from './GoogleMap.js';
 
 
@@ -28,12 +28,25 @@ function Home(){
   const [email, setEmail] = useState([]);
   const [key, setKey] = useState([]);
 
+  const [userUid, setUid] = useState([]);
 
+
+  const ff = fire.auth().onAuthStateChanged(function(user){
+    if(user)
+    {
+        setUid(user.uid);
+    }
+    else {
+
+    }
+  });
 
 
   React.useEffect(() =>{
-   var userId = fire.auth().currentUser.uid;
 
+
+
+    console.log(userUid); // 이게 userUid야 이거 가지고 사용해
    var query = fire.database().ref('자유게시판');
 
    const loadingListener = query.on("value" , snapshot =>
