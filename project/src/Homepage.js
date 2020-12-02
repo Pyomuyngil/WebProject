@@ -66,7 +66,6 @@ function Homepage(){
   </Grid.Column>
   </Grid.Row>
   </Grid>
-  <ImageUpload />
   </div>
 </Router>
   );

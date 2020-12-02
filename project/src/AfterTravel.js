@@ -1,11 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import ATWrite from "./AfterTravelWrite.js"
 import Person from './ss.png'
+import {storage, fire} from './config/fire';
 
 function AfterTravel(){
+
+  const [title,setTitle] = useState([]);
+  const [contents,setContents] = useState([]);
+  const [writeDate, setDate] = useState([]);
+  const [email, setEmail] = useState([]);
+  const [key, setKey] = useState([]);
+
+
+
+
+  React.useEffect(() =>{
+   var userId = fire.auth().currentUser;
+
+   var query = fire.database().ref('여행후기');
+
+   const loadingListener = query.on("value" , snapshot =>
+       {
+         snapshot.forEach(function(childSnapshot)
+         {
+         console.log(childSnapshot);
+         setTitle(title => [...title, childSnapshot.val(),]);
+         setContents(contents => [...contents, childSnapshot.val(),]);
+         setDate(writeDate => [...writeDate,childSnapshot.val(),]);
+         setEmail(email => [...email,childSnapshot.val(),]);
+         setKey(key => [...key,childSnapshot.val(),]);
+         }
+       );
+
+
+      });
+      return () => {
+            query.off('value', loadingListener);
+          };
+    },[]);
+
+
   return (
 
   <div>
@@ -17,75 +54,29 @@ function AfterTravel(){
         </Button>
         </Link>
       </Header>
+
       <div class="ui link cards">
+      {title.map((item) =>{
+        return(
         <div class="card">
           <div class="image">
             <img src={Person} />
           </div>
           <div class="content">
-            <div class="header">Matt Giampietro</div>
+            <div class="header">{item.title}</div>
           </div>
           <div class="extra content">
             <span class="right floated">
-            Joined in 2013
+            {item.writeDate}
             </span>
             <span>
             <i class="user icon"></i>
-            75 Friends
+            {item.email}
             </span>
           </div>
         </div>
-        <div class="card">
-          <div class="image">
-            <img src="ss.png" />
-          </div>
-          <div class="content">
-            <div class="header">Molly</div>
-        </div>
-        <div class="extra content">
-          <span class="right floated">
-            Joined in 2011
-          </span>
-          <span>
-            <i class="user icon"></i>
-            35 Friends
-          </span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="image">
-          <img src="ss.png" />
-        </div>
-        <div class="content">
-          <div class="header">Elyse</div>
-        </div>
-        <div class="extra content">
-          <span class="right floated">
-            Joined in 2014
-          </span>
-          <span>
-            <i class="user icon"></i>
-            151 Friends
-          </span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="image">
-          <img src="ss.png" />
-        </div>
-        <div class="content">
-          <div class="header">lala</div>
-        </div>
-        <div class="extra content">
-          <span class="right floated">
-            Joined in 2013
-          </span>
-          <span>
-            <i class="user icon"></i>
-            151 Friends
-          </span>
-        </div>
-      </div>
+      )
+    })}
     </div>
 
     <div>
