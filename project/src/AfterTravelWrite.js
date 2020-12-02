@@ -13,7 +13,6 @@ var [titletext, setTitletext ] = useState("");
 var [contentstext , setContentstext] = useState("");
 var [image, setImage] = useState("");
 var [url, setUrl] = useState("");
-var [progress, setProgress] = useState("");
 
 const titleHandler = (e) =>
 {
