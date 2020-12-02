@@ -7,7 +7,8 @@ class ImageUpload extends Component{
         super(props);
         this.state = {
           image : null,
-          url : ''
+          url : '',
+          progress : 0
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
@@ -19,11 +20,14 @@ class ImageUpload extends Component{
         }
       }
       handleUpload = () => {
+          const userId = fire.auth().currentUser.uid;
+          var forder = userId + '/'
           const {image} = this.state;
-          const uploadTask = storage.ref('images/').put(image);
+          const uploadTask = storage.ref(forder + image.name).put(image);
           uploadTask.on('state_changed',
           (snapshot) => {
-
+              const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+              this.setState({progress});
           }, (error) => {
             console.log(error);
           },
