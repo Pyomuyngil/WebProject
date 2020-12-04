@@ -5,40 +5,56 @@ import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-
 import ATWrite from "./AfterTravelWrite.js"
 import {storage, fire} from './config/fire';
 
-function AfterTravel(){
+export default function AfterTravel(){
 
-  const [title,setTitle] = useState([]);
-  const [contents,setContents] = useState([]);
-  const [writeDate, setDate] = useState([]);
-  const [email, setEmail] = useState([]);
-  const [key, setKey] = useState([]);
-  const [image, setImage] = useState([]);
 
-var pathReference = storage.ref('images/stars.jpg');
+
+
+
+    const [userdata , setUserData] = useState([]);
 
   React.useEffect(() =>{
-   var userId = fire.auth().currentUser;
 
-   var query = fire.database().ref('여행후기');
 
-   const loadingListener = query.on("value" , snapshot =>
-       {
-         snapshot.forEach(function(childSnapshot)
-         {
-         console.log(childSnapshot);
-         setTitle(title => [...title, childSnapshot.val(),]);
-         setContents(contents => [...contents, childSnapshot.val(),]);
-         setDate(writeDate => [...writeDate,childSnapshot.val(),]);
-         setEmail(email => [...email,childSnapshot.val(),]);
-         setKey(key => [...key,childSnapshot.val(),]);
-         setImage(image => [...image,childSnapshot.val(),]);
+    var userId = fire.auth().currentUser;
+
+    var query = fire.database().ref('여행후기');
+
+    const loadingListener = query.on("value" , snapshot =>
+        {
+          snapshot.forEach(function(childSnapshot)
+          {
+
+
+            setUserData(data =>
+              [...data,
+                {
+                title : childSnapshot.val().title,
+                contents : childSnapshot.val().contents,
+                writeDate : childSnapshot.val().writeDate,
+                email :childSnapshot.val().email,
+                userId : childSnapshot.val().userId,
+                image :childSnapshot.val().image,
+                url : childSnapshot.val().url,
+                }
+
+
+
+              ]);
+
+
+          }
+        );
+
+
+
          }
        );
 
-
-      });
       return () => {
             query.off('value', loadingListener);
+
+
           };
     },[]);
 
@@ -56,11 +72,15 @@ var pathReference = storage.ref('images/stars.jpg');
       </Header>
 
       <div class="ui link cards">
-      {title.map((item) =>{
+      {userdata.map((item) =>{
+
+
+
         return(
         <div class="card">
           <div class="image">
-            <img src={storage.ref(item.email + item.image).getDownloadURL()} />
+          {console.log(item.url)}
+          <img src={item.url} />
           </div>
           <div class="content">
             <div class="header">{item.title}</div>
@@ -83,4 +103,3 @@ var pathReference = storage.ref('images/stars.jpg');
   </div>
   );
 }
-export default AfterTravel;

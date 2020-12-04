@@ -42,6 +42,10 @@ const saveData = (e)  =>
   {
 
   }
+  else if( image ==='')
+  {
+
+  }
   else {
     var title = titletext;
     var contents = contentstext;
@@ -50,46 +54,45 @@ const saveData = (e)  =>
     var month = today.getMonth() + 1;  // 월
     var date = today.getDate();  // 날짜
     var writeDate = year + "-" + month + "-" + date
-    var userId = fire.auth().currentUser;
-    fire.database().ref('여행후기').push().set({
-      userId : userId.uid,
-      email : userId.email,
-      title : title,
-      contents : contents,
-      writeDate : writeDate,
-      image : image.name,
-    });
 
-    var folder = userId.email + "/"
-    var uploadTask = storage.ref(folder + image.name).put(image);
+
+    var userId = fire.auth().currentUser;
+    console.log(userId);
+    console.log(userId.uid);
+
+
+
+    var folder = userId.uid;
+    console.log(image);
+    var uploadTask = storage.ref(folder).child(image.name).put(image);
     uploadTask.on('state_changed',
           (snapshot) => {
+
           }, (error) => {
             console.log(error);
-          });
+          },
+          () =>{
+            storage.ref(folder).child(image.name).getDownloadURL().then(url =>
+            {
+              fire.database().ref('여행후기').push().set({
+                userId : userId.uid,
+                email : userId.email,
+                title : title,
+                contents : contents,
+                writeDate : writeDate,
+                image : image.name,
+                url : url,
+              });
+            })
+          }
+
+        );
 
     setTitletext('');
     setContentstext('');
     history.goBack();
   }
   var query = fire.database().ref('여행후기');
-
-  const upListener = query.on("value" , snapshot =>
-      {
-        snapshot.forEach(function(childSnapshot)
-        {
-          fire.database().ref('여행후기/' + childSnapshot.key).update({
-            key : childSnapshot.key,
-            url : url
-          });
-        }
-      );
-
-
-     });
-     return () => {
-           query.off('value', upListener);
-         };
 
   }
 
