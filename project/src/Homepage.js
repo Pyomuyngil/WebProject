@@ -102,14 +102,10 @@ function Homepage(){
   <Header as='h2'>국내동행찾기 최근 글</Header>
   <Table celled selectable>
       <Table.Body>
-      {freeboard.map((item) =>{
-        return(
-        <Table.Row>
-          <Table.Cell>{item.title}</Table.Cell>
-          <Table.Cell>{item.writeDate}</Table.Cell>
-        </Table.Row>
-      )
-    })}
+      <Table.Cell>
+          <div>'abcd'님 어서오세요!</div>
+          <div><a>회원</a></div>
+          </Table.Cell>
       </Table.Body>
     </Table>
     <Header as='h2'>여행후기 최근 글</Header>
@@ -125,6 +121,19 @@ function Homepage(){
         })}
         </Table.Body>
       </Table>
+      <Header as='h2'>자유게시판 최근 글</Header>
+      <Table celled selectable>
+          <Table.Body>
+            {freeboard.map((item) =>{
+              return(
+              <Table.Row>
+                <Table.Cell>{item.title}</Table.Cell>
+                <Table.Cell>{item.writeDate}</Table.Cell>
+              </Table.Row>
+            )
+          })}
+          </Table.Body>
+        </Table>
   </Grid.Column>
   </Grid.Row>
   </Grid>
