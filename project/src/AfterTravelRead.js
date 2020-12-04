@@ -70,6 +70,8 @@ function AfterTravelRead() {
               </tr>
             </thead>
           </table>
+          <img class="ui centered medium image" src={item.url} />
+          <br/>
           <Link to = '/AfterTravel'>
             <Button style={{ marginTop: '1em' }} className="ui blue button">
               뒤로가기
