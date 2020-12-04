@@ -7,6 +7,7 @@ import Find from "./Find.js";
 import FindWrite from "./FindWrite.js";
 import AfterTravel from "./AfterTravel.js";
 import ATWrite from "./AfterTravelWrite.js";
+import ATRead from "./AfterTravelRead.js";
 import FreeBoard from "./FreeBoard.js";
 import FaqLayout from "./FaqLayout.js";
 import FaqOne from "./FaqOne.js";
@@ -48,26 +49,36 @@ function Home(){
 
 
     console.log(userUid); // 이게 userUid야 이거 가지고 사용해
-   var query = fire.database().ref('자유게시판');
 
-   const loadingListener = query.on("value" , snapshot =>
+    const loadingListener2 = fire.database().ref('여행후기').on("value" , snapshot =>
+        {
+          snapshot.forEach(function(childSnapshot)
+          {
+          console.log(childSnapshot);
+          setTitle(title => [...title, childSnapshot.val(),]);
+          setKey(key => [...key,childSnapshot.val(),]);
+          }
+        );
+      });
+       return () => {
+             fire.database().ref('여행후기').off('value', loadingListener2);
+           };
+
+   const loadingListener3 = fire.database().ref('자유게시판').on("value" , snapshot =>
        {
          snapshot.forEach(function(childSnapshot)
          {
          console.log(childSnapshot);
          setTitle(title => [...title, childSnapshot.val(),]);
-         setContents(contents => [...contents, childSnapshot.val(),]);
-         setDate(writeDate => [...writeDate,childSnapshot.val(),]);
-         setEmail(email => [...email,childSnapshot.val(),]);
          setKey(key => [...key,childSnapshot.val(),]);
          }
        );
-
-
-      });
+     });
       return () => {
-            query.off('value', loadingListener);
+            fire.database().ref('자유게시판').off('value', loadingListener3);
           };
+
+
     },[]);
     return(
       <Router>
@@ -88,7 +99,8 @@ function Home(){
           <Route path ="/ATWrite" component = {ATWrite} />
           {title.map((item) =>{
             return(
-          <Route path ={'/'+item.key} component = {BoardRead} />
+          <Route path ={'/'+item.key} component = {BoardRead} />,
+          <Route path ={'/'+item.key} component = {ATRead} />
         )
       })}
         </div>

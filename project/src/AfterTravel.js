@@ -5,7 +5,7 @@ import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-
 import ATWrite from "./AfterTravelWrite.js"
 import {storage, fire} from './config/fire';
 
-export default function AfterTravel(){
+function AfterTravel(){
 
 
 
@@ -36,6 +36,7 @@ export default function AfterTravel(){
                 userId : childSnapshot.val().userId,
                 image :childSnapshot.val().image,
                 url : childSnapshot.val().url,
+                key : childSnapshot.val().key
                 }
 
 
@@ -80,8 +81,9 @@ export default function AfterTravel(){
         <div class="card">
           <div class="image">
           {console.log(item.url)}
-          <img src={item.url} />
+          <img src={item.url}/>
           </div>
+          <Link to={'/'+item.key}>
           <div class="content">
             <div class="header">{item.title}</div>
           </div>
@@ -94,6 +96,8 @@ export default function AfterTravel(){
             {item.email}
             </span>
           </div>
+
+          </Link>
         </div>
       )
     })}
@@ -103,3 +107,5 @@ export default function AfterTravel(){
   </div>
   );
 }
+
+export default AfterTravel

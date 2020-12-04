@@ -38,12 +38,36 @@ const saveData = (e)  =>
 {
  e.preventDefault();
 
-  if(titletext === '' || contentstext ==='')
+  if(titletext == '' || contentstext =='')
   {
 
   }
-  else if( image ==='')
+  else if( image =='')
   {
+
+    var title = titletext;
+    var contents = contentstext;
+    var today = new Date();
+    var year = today.getFullYear(); // 년도
+    var month = today.getMonth() + 1;  // 월
+    var date = today.getDate();  // 날짜
+    var writeDate = year + "-" + month + "-" + date
+
+    var userId = fire.auth().currentUser;
+
+              fire.database().ref('여행후기').push().set({
+                userId : userId.uid,
+                email : userId.email,
+                title : title,
+                contents : contents,
+                writeDate : writeDate,
+                url : "https://firebasestorage.googleapis.com/v0/b/gotogether-78a33.appspot.com/o/DJ3IJkDJOgTaL3AUhQMsVEePdKU2%2Fnonono.jpg?alt=media&token=b2794f50-d92f-4ec0-8d58-79ead9fff6fc"
+              });
+
+
+    setTitletext('');
+    setContentstext('');
+    history.goBack();
 
   }
   else {
@@ -80,21 +104,35 @@ const saveData = (e)  =>
                 title : title,
                 contents : contents,
                 writeDate : writeDate,
-                image : image.name,
-                url : url,
+                url : url
               });
             })
           }
-
         );
 
     setTitletext('');
     setContentstext('');
     history.goBack();
   }
+
   var query = fire.database().ref('여행후기');
 
-  }
+  const upListener = query.on("value" , snapshot =>
+      {
+        snapshot.forEach(function(childSnapshot)
+        {
+          fire.database().ref('여행후기/' + childSnapshot.key).update({
+            key : childSnapshot.key
+          });
+        }
+      );
+
+
+     });
+     return () => {
+           query.off('value', upListener);
+         };
+}
 
 
 
