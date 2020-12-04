@@ -56,28 +56,43 @@ const saveData = (e)  =>
       email : userId.email,
       title : title,
       contents : contents,
-      writeDate : writeDate
+      writeDate : writeDate,
+      image : image.name,
     });
 
-    var forder = userId.email + "/"
-    var uploadTask = storage.ref(forder + image.name).put(image);
+    var folder = userId.email + "/"
+    var uploadTask = storage.ref(folder + image.name).put(image);
     uploadTask.on('state_changed',
           (snapshot) => {
           }, (error) => {
             console.log(error);
-          },
-          () => {
-            storage.ref('images').child(image.name).getDownloadURL().then(url => {
-              console.log(url);
-              setUrl({url});
-            })
           });
 
     setTitletext('');
     setContentstext('');
     history.goBack();
   }
-}
+  var query = fire.database().ref('여행후기');
+
+  const upListener = query.on("value" , snapshot =>
+      {
+        snapshot.forEach(function(childSnapshot)
+        {
+          fire.database().ref('여행후기/' + childSnapshot.key).update({
+            key : childSnapshot.key,
+            url : url
+          });
+        }
+      );
+
+
+     });
+     return () => {
+           query.off('value', upListener);
+         };
+
+  }
+
 
 
   return (

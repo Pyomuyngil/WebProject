@@ -1,9 +1,8 @@
 import React, { Component, useState } from 'react';
 import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
-  List,  Menu,  Segment, Pagination} from 'semantic-ui-react'
+  List,  Menu,  Segment} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import ATWrite from "./AfterTravelWrite.js"
-import Person from './ss.png'
 import {storage, fire} from './config/fire';
 
 function AfterTravel(){
@@ -13,9 +12,9 @@ function AfterTravel(){
   const [writeDate, setDate] = useState([]);
   const [email, setEmail] = useState([]);
   const [key, setKey] = useState([]);
+  const [image, setImage] = useState([]);
 
-
-
+var pathReference = storage.ref('images/stars.jpg');
 
   React.useEffect(() =>{
    var userId = fire.auth().currentUser;
@@ -32,6 +31,7 @@ function AfterTravel(){
          setDate(writeDate => [...writeDate,childSnapshot.val(),]);
          setEmail(email => [...email,childSnapshot.val(),]);
          setKey(key => [...key,childSnapshot.val(),]);
+         setImage(image => [...image,childSnapshot.val(),]);
          }
        );
 
@@ -60,7 +60,7 @@ function AfterTravel(){
         return(
         <div class="card">
           <div class="image">
-            <img src={Person} />
+            <img src={storage.ref(item.email + item.image).getDownloadURL()} />
           </div>
           <div class="content">
             <div class="header">{item.title}</div>
@@ -77,10 +77,6 @@ function AfterTravel(){
         </div>
       )
     })}
-    </div>
-
-    <div>
-    <Pagination defaultActivePage={5} totalPages={5} />
     </div>
 
   </Container>
