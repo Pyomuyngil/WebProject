@@ -1,7 +1,6 @@
 import React, { Component ,useState } from 'react';
 import {Container, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
-import BoardRead from "./BoardRead.js"
 
 import fire from './config/fire';
 function FreeBoard(){
@@ -72,8 +71,6 @@ function FreeBoard(){
               <td width="20%"><Link to={'/'+item.key}>{item.email}</Link></td>
               <td className="right aligned"><Link to={'/'+item.key}>{item.writeDate}</Link></td>
               </tr>
-
-
             )
           })}
           </tbody>

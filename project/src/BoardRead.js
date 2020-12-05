@@ -72,7 +72,7 @@ function BoardRead() {
           </table>
           <Link to = '/FreeBoard'>
             <Button style={{ marginTop: '1em' }} className="ui blue button">
-              뒤로가기
+              자유게시판으로 가기
             </Button>
           </Link>
 

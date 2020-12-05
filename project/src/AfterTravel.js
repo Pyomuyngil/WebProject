@@ -1,15 +1,9 @@
 import React, { Component, useState } from 'react';
-import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
-  List,  Menu,  Segment} from 'semantic-ui-react'
+import {Card, Icon, Container, Grid, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
-import ATWrite from "./AfterTravelWrite.js"
 import {storage, fire} from './config/fire';
 
 function AfterTravel(){
-
-
-
-
 
     const [userdata , setUserData] = useState([]);
 
@@ -38,24 +32,17 @@ function AfterTravel(){
                 url : childSnapshot.val().url,
                 key : childSnapshot.val().key
                 }
-
-
-
               ]);
 
 
           }
         );
 
-
-
          }
        );
 
       return () => {
             query.off('value', loadingListener);
-
-
           };
     },[]);
 

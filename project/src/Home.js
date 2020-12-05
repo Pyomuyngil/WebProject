@@ -25,9 +25,6 @@ import {Link, BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 
 function Home(){
   const [title,setTitle] = useState([]);
-  const [contents,setContents] = useState([]);
-  const [writeDate, setDate] = useState([]);
-  const [email, setEmail] = useState([]);
   const [key, setKey] = useState([]);
 
   const [userUid, setUid] = useState([]);
@@ -60,9 +57,6 @@ function Home(){
           }
         );
       });
-       return () => {
-             fire.database().ref('여행후기').off('value', loadingListener2);
-           };
 
    const loadingListener3 = fire.database().ref('자유게시판').on("value" , snapshot =>
        {
@@ -75,6 +69,7 @@ function Home(){
        );
      });
       return () => {
+            fire.database().ref('여행후기').off('value', loadingListener2);
             fire.database().ref('자유게시판').off('value', loadingListener3);
           };
 
@@ -99,10 +94,14 @@ function Home(){
           <Route path ="/ATWrite" component = {ATWrite} />
           {title.map((item) =>{
             return(
-          <Route path ={'/'+item.key} component = {BoardRead} />,
           <Route path ={'/'+item.key} component = {ATRead} />
         )
       })}
+      {title.map((item) =>{
+        return(
+      <Route path ={'/'+item.key} component = {BoardRead} />
+    )
+  })}
         </div>
       </Router>
   );

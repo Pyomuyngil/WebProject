@@ -74,7 +74,7 @@ function AfterTravelRead() {
           <br/>
           <Link to = '/AfterTravel'>
             <Button style={{ marginTop: '1em' }} className="ui blue button">
-              뒤로가기
+              여행후기로 가기
             </Button>
           </Link>
 

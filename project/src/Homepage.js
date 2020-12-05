@@ -2,7 +2,6 @@ import React, { Component ,useState } from 'react';
 import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment, Pagination, Table} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
-import BoardWrite from "./BoardWrite.js"
 import fire from './config/fire';
 function Homepage(){
 
@@ -27,6 +26,7 @@ function Homepage(){
               writeDate : childSnapshot.val().writeDate,
               email :childSnapshot.val().email,
               userId : childSnapshot.val().userId,
+              key : childSnapshot.val().key,
               }
             ]);
         }
@@ -60,6 +60,7 @@ function Homepage(){
               writeDate : childSnapshot.val().writeDate,
               email :childSnapshot.val().email,
               userId : childSnapshot.val().userId,
+              key : childSnapshot.val().key,
               }
             ]);
         }
@@ -77,7 +78,6 @@ function Homepage(){
 
 
   return (
-<Router>
 <div class ='ui form' style={{ marginTop: '8em', marginLeft: '2em' }}>
 <Grid>
 <Grid.Row>
@@ -113,9 +113,10 @@ function Homepage(){
         <Table.Body>
           {aftertravel.map((item) =>{
             return(
+
             <Table.Row>
-              <Table.Cell>{item.title}</Table.Cell>
-              <Table.Cell>{item.writeDate}</Table.Cell>
+              <Link to={'/'+item.key}><Table.Cell>{item.title}</Table.Cell></Link>
+              <Link to={'/'+item.key}><Table.Cell>{item.writeDate}</Table.Cell></Link>
             </Table.Row>
           )
         })}
@@ -127,8 +128,8 @@ function Homepage(){
             {freeboard.map((item) =>{
               return(
               <Table.Row>
-                <Table.Cell>{item.title}</Table.Cell>
-                <Table.Cell>{item.writeDate}</Table.Cell>
+                <Link to={'/'+item.key}><Table.Cell>{item.title}</Table.Cell></Link>
+                <Link to={'/'+item.key}><Table.Cell>{item.writeDate}</Table.Cell></Link>
               </Table.Row>
             )
           })}
@@ -138,7 +139,6 @@ function Homepage(){
   </Grid.Row>
   </Grid>
   </div>
-</Router>
   );
 }
 export default Homepage;
