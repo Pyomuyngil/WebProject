@@ -103,6 +103,7 @@ const mapRef = React.useRef();
             글 정보
           </Header>
           <div>
+
           <table class="ui selectable inverted table">
             <thead>
               <tr>
@@ -132,13 +133,18 @@ const mapRef = React.useRef();
 
       )
       })}
+    </Grid.Column>
+
+    <Grid.Column width ={4}>
+    <div>
+    <h1>adsfdsf</h1>
 
 
- 
+    </div>
     </Grid.Column>
     </Grid.Row>
     </Grid>
-      </div>
+    </div>
 
 
 
