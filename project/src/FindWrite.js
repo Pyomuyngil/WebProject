@@ -152,7 +152,7 @@ const onMapClick = React.useCallback((e) => {
 
       setTitletext('');
       setContentstext('');
-        history.push('/Find');
+      history.push('/Find')
 
     }
 
@@ -199,9 +199,7 @@ const onMapClick = React.useCallback((e) => {
       </div>
 
       <Button.Group>
-
       <Button onClick={saveData} positive>Save</Button>
-
 
       <Button.Or />
 
