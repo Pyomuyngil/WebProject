@@ -1,4 +1,4 @@
-import React, { Component ,useState } from 'react';
+import React, { Component ,useState, useEffect } from 'react';
 import {Container, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
@@ -16,18 +16,22 @@ function BoardRead() {
    console.log(urlname);
 
 
-   React.useEffect(() =>{
+
+   useEffect(() =>{
+
+     const fetchdata = async() =>{
     var userId = fire.auth().currentUser.uid;
 
     var query = fire.database().ref('자유게시판');
 
-    const loadingListener = query.on("value" , snapshot =>
+    const loadingListener = await query.once("value" , snapshot =>
         {
           snapshot.forEach(function(childSnapshot)
           {
-          console.log(childSnapshot);
-          console.log(urlname);
+
           if(urlname == childSnapshot.val().key) {
+
+
           setTitle(title => [...title, childSnapshot.val(),]);
           setContents(contents => [...contents, childSnapshot.val(),]);
           setDate(writeDate => [...writeDate,childSnapshot.val(),]);
@@ -39,23 +43,29 @@ function BoardRead() {
 
 
        });
-       return () => {
-             query.off('value', loadingListener);
-           };
+
+         };
+         return ()=>{
+         fetchdata();
+       }
+
      },[]);
 
 
 
-
     return(
+
       <div>
+
       {title.map((item) =>{
+
         return(
         <Container text style={{ marginTop: '7em' }}>
           <Header as='h1'>
             글 정보
           </Header>
           <div>
+
           <table class="ui selectable inverted table">
             <thead>
               <tr>

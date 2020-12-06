@@ -62,7 +62,7 @@ function Home(){
        {
          snapshot.forEach(function(childSnapshot)
          {
-         console.log(childSnapshot);
+        
          setTitle(title => [...title, childSnapshot.val(),]);
          setKey(key => [...key,childSnapshot.val(),]);
          }

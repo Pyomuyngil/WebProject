@@ -52,6 +52,7 @@ const saveData = (e)  =>
     setTitletext('');
     setContentstext('');
     history.goBack();
+
   }
 
   var query = fire.database().ref('자유게시판');

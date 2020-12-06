@@ -1,10 +1,14 @@
-import React, { Component ,useState } from 'react';
+import React, { Component ,useState ,useEffect} from 'react';
 import {Container, Header, Image, Button} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
 import fire from './config/fire';
 
-function AfterTravelRead() {
+
+
+
+
+function AfterTravelRead(props) {
 
    const [title,setTitle] = useState([]);
    const [contents,setContents] = useState([]);
@@ -17,32 +21,32 @@ function AfterTravelRead() {
    console.log(urlname);
 
 
-   React.useEffect(() =>{
-    var userId = fire.auth().currentUser.uid;
-
-    var query = fire.database().ref('여행후기');
-
-    const loadingListener = query.on("value" , snapshot =>
-        {
-          snapshot.forEach(function(childSnapshot)
-          {
-          if(urlname == childSnapshot.val().key) {
-          setTitle(title => [...title, childSnapshot.val(),]);
-          setContents(contents => [...contents, childSnapshot.val(),]);
-          setDate(writeDate => [...writeDate,childSnapshot.val(),]);
-          setEmail(email => [...email,childSnapshot.val(),]);
-          setKey(key => [...key,childSnapshot.val(),]);
-          setUrl(key => [...url,childSnapshot.val(),]);
-        }
-          }
-        );
 
 
-       });
-       return () => {
-             query.off('value', loadingListener);
-           };
+
+     useEffect(()=>{
+
+       var userId = fire.auth().currentUser.uid;
+       var query = fire.database().ref('여행후기');
+
+       const loadingListener =  query.on("value" , snapshot =>
+           {
+             snapshot.forEach(function(childSnapshot)
+             {
+             if(urlname == childSnapshot.val().key) {
+             setTitle(title => [...title, childSnapshot.val(),]);
+            
+           }
+             }
+           );
+
+
+          });
+
+
      },[]);
+
+
 
 
 
