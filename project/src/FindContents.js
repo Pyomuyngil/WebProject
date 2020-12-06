@@ -16,21 +16,6 @@ Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
 const libraries = ["places"];
 
 
-const mapContainerStyle = {
-  height: "75vh",
-  width: "700px",
-  marginLeft : "50px",
-  marginTop : "25px",
-};
-const options = {
-  styles: mapStyles,
-  disableDefaultUI: true,
-  zoomControl: true,
-};
-const center = {
-  lat: 36.621159,
-  lng: 127.074172,
-};
 
 
 function FindContents(props) {
@@ -40,6 +25,24 @@ function FindContents(props) {
    const urlname1 = window.location.pathname;
    var urlname = urlname1.replace('/', '');
    console.log(urlname);
+
+
+   const mapContainerStyle = {
+     height: "75vh",
+     width: "700px",
+     marginLeft : "50px",
+     marginTop : "25px",
+   };
+   const options = {
+     styles: mapStyles,
+     disableDefaultUI: true,
+     zoomControl: true,
+   };
+   const center = {
+     lat: 36.621159,
+     lng: 127.074172,
+   };
+
 
    const { isLoaded, loadError } = useLoadScript({
      googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
