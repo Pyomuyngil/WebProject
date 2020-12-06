@@ -2,7 +2,7 @@ import React, { Component ,useState ,useEffect} from 'react';
 import {Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment , Input} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
-
+import Geocode from "react-geocode";
 import fire from './config/fire';
 import mapStyles from "./mapStyles";
 import {
@@ -13,6 +13,8 @@ import {
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
 const libraries = ["places"];
+Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
+
 const mapContainerStyle = {
   height: "75vh",
   width: "700px",
@@ -37,7 +39,10 @@ function FindContents(props) {
    const urlname1 = window.location.pathname;
    var urlname = urlname1.replace('/', '');
    console.log(urlname);
-
+   const { isLoaded, loadError } = useLoadScript({
+     googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
+     libraries,
+   });
 
 
 const mapRef = React.useRef();
@@ -46,16 +51,6 @@ const mapRef = React.useRef();
 
 
    }, []);
-
-
-
-
-
-
-
-
-
-
 
 
      useEffect(()=>{
@@ -81,23 +76,16 @@ const mapRef = React.useRef();
      },[]);
 
 
-
-
-
-
     return(
 
 
 
-
-
-      <div>
-      <Grid>
-
-      <Grid.Row>
-      <Grid.Column width = {8}>
+            <div>
       {title.map((item) =>{
         return(
+          <Grid>
+          <Grid.Row>
+          <Grid.Column width={8}>
         <Container text style={{ marginTop: '7em' }}>
           <Header as='h1'>
             글 정보
@@ -130,21 +118,77 @@ const mapRef = React.useRef();
 
           </div>
         </Container>
+        </Grid.Column>
+        <Grid.Column width ={4} style={{marginTop :'7em'}} >
+        <GoogleMap
+          id="map"
+          mapContainerStyle={mapContainerStyle}
+          zoom={7}
+          center={center}
+          options={options}
+          onLoad={onMapLoad}
+        >
+          {item.markers.map((marker ,index) => (
+            <Marker
+              key={`${marker.lat}-${marker.lng}`}
+              position={{ lat: marker.lat, lng: marker.lng }}
+              label = {`${index+1}`}
+              onClick={() => {
+                setSelected(marker);
+              }}
+
+
+            />
+          ))}
+
+          {selected ? (
+            <InfoWindow
+              position={{ lat: selected.lat, lng: selected.lng }}
+              onCloseClick={() => {
+                setSelected(null);
+              }}
+            >
+              <div>
+                <h2>
+                  {selected.location}
+                </h2>
+
+              </div>
+            </InfoWindow>
+          ) : null}
+
+          <div>
+          </div>
+        </GoogleMap>
+        <div className="arrayLo">
+
+        <div>
+        <h1>여행지 목록 </h1>
+        </div>
+
+          <ul>
+          {item.tags.map((tag, index) =>(
+            <li key = {index} style={{listStyleType : "decimal"}}>
+
+            <span>{tag}</span>
+            <i id ="column"></i>
+            </li>
+          ))}
+
+            </ul>
+        </div>
+        </Grid.Column>
+
+        </Grid.Row>
+        </Grid>
 
       )
       })}
-    </Grid.Column>
-
-    <Grid.Column width ={4}>
-    <div>
-    <h1>adsfdsf</h1>
+      </div>
 
 
-    </div>
-    </Grid.Column>
-    </Grid.Row>
-    </Grid>
-    </div>
+
+
 
 
 

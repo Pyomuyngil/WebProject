@@ -53,8 +53,8 @@ return (
 
 <div>
   <Container text style={{ marginTop: '7em' }}>
-    <Header as='h1'>여행후기
-    <Link to='/ATWrite'>
+    <Header as='h1'>국내동행찾기
+    <Link to='/FindWrite'>
       <Button style={{ marginLeft: '29em' }} className="ui blue button">
         글쓰기
       </Button>
