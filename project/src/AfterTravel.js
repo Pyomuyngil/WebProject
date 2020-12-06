@@ -6,7 +6,7 @@ import {storage, fire} from './config/fire';
 function AfterTravel(){
 
     const [userdata , setUserData] = useState([]);
-    const [flag, setflag] = useState(false);
+
   React.useEffect(() =>{
 
 
@@ -14,10 +14,9 @@ function AfterTravel(){
 
     var query = fire.database().ref('여행후기');
 
-    const loadingListener = query.on("value" , async (snapshot) =>
+    const loadingListener = query.on("value" , snapshot =>
         {
-          setUserData([]);
-          await snapshot.forEach(function(childSnapshot)
+          snapshot.forEach(function(childSnapshot)
           {
 
 
@@ -39,12 +38,12 @@ function AfterTravel(){
           }
         );
 
-         });
+         }
+       );
 
       return () => {
             query.off('value', loadingListener);
           };
-
     },[]);
 
 
@@ -66,16 +65,15 @@ function AfterTravel(){
 
 
         return(
+
         <div class="card">
-
-          <div class="image">
-
-          <img src={item.url}/>
-
-          </div>
           <Link to={'/'+item.key}>
+          <div class="image">
+          <img src={item.url} width = "290" height = "300" />
+          </div>
+          </Link>
           <div class="content">
-            <div class="header">{item.title}</div>
+            <div class="header"><Link to={'/'+item.key}>{item.title}</Link></div>
           </div>
           <div class="extra content">
             <span class="right floated">
@@ -86,8 +84,6 @@ function AfterTravel(){
             {item.email}
             </span>
           </div>
-
-          </Link>
         </div>
       )
     })}
