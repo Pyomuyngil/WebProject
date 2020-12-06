@@ -12,8 +12,9 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
-const libraries = ["places"];
 Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
+const libraries = ["places"];
+
 
 const mapContainerStyle = {
   height: "75vh",
@@ -39,6 +40,7 @@ function FindContents(props) {
    const urlname1 = window.location.pathname;
    var urlname = urlname1.replace('/', '');
    console.log(urlname);
+
    const { isLoaded, loadError } = useLoadScript({
      googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
      libraries,
@@ -51,7 +53,6 @@ const mapRef = React.useRef();
 
 
    }, []);
-
 
      useEffect(()=>{
 
@@ -80,7 +81,7 @@ const mapRef = React.useRef();
 
 
 
-            <div>
+      <div>
       {title.map((item) =>{
         return(
           <Grid>
