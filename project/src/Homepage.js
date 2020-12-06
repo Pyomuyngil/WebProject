@@ -115,8 +115,8 @@ function Homepage(){
             return(
 
             <Table.Row>
-              <Link to={'/'+item.key}><Table.Cell>{item.title}</Table.Cell></Link>
-              <Link to={'/'+item.key}><Table.Cell>{item.writeDate}</Table.Cell></Link>
+              <Table.Cell><Link to={'/'+item.key}>{item.title}</Link></Table.Cell>
+              <Table.Cell><Link to={'/'+item.key}>{item.writeDate}</Link></Table.Cell>
             </Table.Row>
           )
         })}
@@ -128,8 +128,8 @@ function Homepage(){
             {freeboard.map((item) =>{
               return(
               <Table.Row>
-                <Link to={'/'+item.key}><Table.Cell>{item.title}</Table.Cell></Link>
-                <Link to={'/'+item.key}><Table.Cell>{item.writeDate}</Table.Cell></Link>
+              <Table.Cell><Link to={'/'+item.key}>{item.title}</Link></Table.Cell>
+              <Table.Cell><Link to={'/'+item.key}>{item.writeDate}</Link></Table.Cell>
               </Table.Row>
             )
           })}
