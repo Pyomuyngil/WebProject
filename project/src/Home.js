@@ -18,6 +18,7 @@ import BoardRead from "./BoardRead.js";
 import SignUp from './SignUp.js';
 import App from './App.js';
 import GoogleMap from './GoogleMap.js';
+import FindContents from './FindContents.js';
 
 
 
@@ -62,19 +63,49 @@ function Home(){
        {
          snapshot.forEach(function(childSnapshot)
          {
-        
+
          setTitle(title => [...title, childSnapshot.val(),]);
          setKey(key => [...key,childSnapshot.val(),]);
          }
        );
      });
+
+
+
+
+     const loadingListener4 = fire.database().ref('동행게시판').on("value" , snapshot =>
+         {
+           snapshot.forEach(function(childSnapshot)
+           {
+
+           setTitle(title => [...title, childSnapshot.val(),]);
+           setKey(key => [...key,childSnapshot.val(),]);
+           }
+         );
+       });
+
+
       return () => {
             fire.database().ref('여행후기').off('value', loadingListener2);
             fire.database().ref('자유게시판').off('value', loadingListener3);
+            fire.database().ref('동행게시판').off('value', loadingListener4);
           };
 
 
+
+
+
+
+
+
+
+
+
     },[]);
+
+
+
+
     return(
       <Router>
         <div classname= "topMenu">
@@ -92,16 +123,23 @@ function Home(){
           <Route path ="/FaqTwo" component ={FaqTwo} />
           <Route path ="/SendMail" component ={SendMail} />
           <Route path ="/ATWrite" component = {ATWrite} />
+
+
+              {title.map((item) =>{
+                return(
+              <Route path ={'/'+item.key} component = {ATRead} />
+            )
+          })}
+            {title.map((item) =>{
+              return(
+            <Route path ={'/'+item.key} component = {BoardRead} />
+          )
+        })}
           {title.map((item) =>{
-            return(
-          <Route path ={'/'+item.key} component = {ATRead} />
-        )
+          return(
+        <Route path ={'/'+item.key} component = {FindContents} />
+      )
       })}
-      {title.map((item) =>{
-        return(
-      <Route path ={'/'+item.key} component = {BoardRead} />
-    )
-  })}
         </div>
       </Router>
   );

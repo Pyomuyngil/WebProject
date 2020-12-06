@@ -19,12 +19,12 @@ function BoardRead() {
 
    useEffect(() =>{
 
-     const fetchdata = async() =>{
+
     var userId = fire.auth().currentUser.uid;
 
     var query = fire.database().ref('자유게시판');
 
-    const loadingListener = await query.once("value" , snapshot =>
+    const loadingListener =  query.once("value" , snapshot =>
         {
           snapshot.forEach(function(childSnapshot)
           {
@@ -44,10 +44,7 @@ function BoardRead() {
 
        });
 
-         };
-         return ()=>{
-         fetchdata();
-       }
+
 
      },[]);
 
