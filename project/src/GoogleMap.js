@@ -179,7 +179,7 @@ const onMapClick = React.useCallback((e) => {
       <div className="arrayLo">
 
       <div>
-      <h1>여행지 목록  <Link to ='FindWrite' value={{markers,setMarkers}}><Button>저장</Button></Link><Link to ='FindWrite'><Button>뒤로가기</Button></Link> </h1>
+      <h1>여행지 목록  <Link to ={{pathname : `FindWrite`, query:{markers , tags }}}><Button>저장</Button></Link><Link to ='FindWrite'><Button>뒤로가기</Button></Link> </h1>
       </div>
 
         <ul>
