@@ -7,6 +7,39 @@ function Homepage(){
 
   const [freeboard , setFreeBoard] = useState([]);
   const [aftertravel, setAfterTravel] = useState([]);
+  const [find, setFind] = useState([]);
+  React.useEffect(() =>{
+
+
+    var userId = fire.auth().currentUser;
+
+    var query = fire.database().ref('동행게시판').limitToLast(5);
+
+    const loadingFind = query.on("value" , async (snapshot) =>
+        {
+          setFind([]);
+          await snapshot.forEach(function(childSnapshot)
+          {
+            setFind(data =>
+              [...data,
+                {
+                title : childSnapshot.val().title,
+                writeDate : childSnapshot.val().writeDate,
+                email :childSnapshot.val().email,
+                key : childSnapshot.val().key
+                }
+              ]);
+          }
+        );
+
+         });
+
+      return () => {
+            query.off('value', loadingFind);
+          };
+
+    },[]);
+
   React.useEffect(() =>{
 
 
@@ -22,7 +55,6 @@ function Homepage(){
             [...data,
               {
               title : childSnapshot.val().title,
-              contents : childSnapshot.val().contents,
               writeDate : childSnapshot.val().writeDate,
               email :childSnapshot.val().email,
               userId : childSnapshot.val().userId,
@@ -36,8 +68,6 @@ function Homepage(){
 
     return () => {
           query.off('value', loadingFreeBoard);
-
-
         };
   },[]);
 
@@ -56,7 +86,6 @@ function Homepage(){
             [...data,
               {
               title : childSnapshot.val().title,
-              contents : childSnapshot.val().contents,
               writeDate : childSnapshot.val().writeDate,
               email :childSnapshot.val().email,
               userId : childSnapshot.val().userId,
@@ -102,10 +131,15 @@ function Homepage(){
   <Header as='h2'>국내동행찾기 최근 글</Header>
   <Table celled selectable>
       <Table.Body>
-      <Table.Cell>
-          <div>'abcd'님 어서오세요!</div>
-          <div><a>회원</a></div>
-          </Table.Cell>
+      {find.map((item) =>{
+        return(
+
+        <Table.Row>
+          <Table.Cell><Link to={'/'+item.key}>{item.title}</Link></Table.Cell>
+          <Table.Cell><Link to={'/'+item.key}>{item.writeDate}</Link></Table.Cell>
+        </Table.Row>
+      )
+    })}
       </Table.Body>
     </Table>
     <Header as='h2'>여행후기 최근 글</Header>
