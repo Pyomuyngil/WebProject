@@ -17,7 +17,7 @@ import BoardWrite from "./BoardWrite.js";
 import BoardRead from "./BoardRead.js";
 import SignUp from './SignUp.js';
 import App from './App.js';
-
+import GoogleMaps from './GoogleMap.js';
 import FindContents from './FindContents.js';
 import {
   GoogleMap,
@@ -122,7 +122,7 @@ const libraries = ["places"];
           <Redirect to ="/Home" />
           <Route path ="/Find" component ={Find} />
           <Route path ="/FindWrite" component = {FindWrite} />
-          <Route path ="/GoogleMap" component = {GoogleMap} />
+          <Route path ="/GoogleMap" component = {GoogleMaps} />
           <Route path ="/AfterTravel" component = {AfterTravel} />
           <Route path ="/FreeBoard" component = {FreeBoard} />
           <Route path ="/BoardWrite" component ={BoardWrite} />

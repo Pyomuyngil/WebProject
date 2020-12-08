@@ -42,9 +42,10 @@ const center = {
   lng: 127.074172,
 };
 export default function App(){
-  const { isLoaded, loadError } = useLoadScript({
+  const { isLoaded, loadError  } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
     libraries,
+    
   });
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
