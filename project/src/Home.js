@@ -17,9 +17,14 @@ import BoardWrite from "./BoardWrite.js";
 import BoardRead from "./BoardRead.js";
 import SignUp from './SignUp.js';
 import App from './App.js';
-import GoogleMap from './GoogleMap.js';
-import FindContents from './FindContents.js';
 
+import FindContents from './FindContents.js';
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 
 
 import {Link, BrowserRouter as Router, Route, Redirect} from "react-router-dom";
@@ -29,8 +34,11 @@ function Home(){
   const [key, setKey] = useState([]);
 
   const [userUid, setUid] = useState([]);
-
-
+const libraries = ["places"];
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
+    libraries,
+  });
   const ff = fire.auth().onAuthStateChanged(function(user){
     if(user)
     {

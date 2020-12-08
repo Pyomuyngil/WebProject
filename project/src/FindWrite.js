@@ -27,8 +27,7 @@ import "@reach/combobox/styles.css";
 import mapStyles from "./mapStyles";
 
 import { Link,BrowserRouter as Router,Switch,Route,Redirect, useHistory  } from "react-router-dom";
-
-
+Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
 const libraries = ["places"];
 const mapContainerStyle = {
   height: "75vh",
@@ -60,6 +59,7 @@ function FindWrite(props){
   const [selected, setSelected] = React.useState(null);
   const [location, setLocation] = React.useState([]);
   const [tags , setTags] = React.useState([]);
+
 
 
 

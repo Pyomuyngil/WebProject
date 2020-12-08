@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { Component ,useState ,useEffect} from 'react';
 import {Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment , Input} from 'semantic-ui-react'
@@ -12,14 +13,18 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
-Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
+
+//Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
 const libraries = ["places"];
 
 
 
 
-function FindContents(props) {
-
+function FindContents() {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
+    libraries,
+  });
    const [title,setTitle] = useState([]);
   const [selected, setSelected] = React.useState(null);
    const urlname1 = window.location.pathname;
@@ -27,6 +32,12 @@ function FindContents(props) {
    console.log(urlname);
 
 
+   const mapRef = React.useRef();
+      const onMapLoad = React.useCallback((map) => {
+        mapRef.current = map;
+
+
+      }, []);
    const mapContainerStyle = {
      height: "75vh",
      width: "700px",
@@ -44,18 +55,10 @@ function FindContents(props) {
    };
 
 
-   const { isLoaded, loadError } = useLoadScript({
-     googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
-     libraries,
-   });
 
 
-const mapRef = React.useRef();
-   const onMapLoad = React.useCallback((map) => {
-     mapRef.current = map;
 
 
-   }, []);
 
      useEffect(()=>{
 
