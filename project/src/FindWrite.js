@@ -50,10 +50,11 @@ function FindWrite(props){
   const history = useHistory();
   var [titletext, setTitletext ] = useState("");
   var [contentstext , setContentstext] = useState("");
-
+  const language =["ko"];
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
     libraries,
+  
   });
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
