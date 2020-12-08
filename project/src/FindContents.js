@@ -114,6 +114,20 @@ function FindContents() {
               <tr>
                 <th colspan="2">내용 : {item.contents}</th>
               </tr>
+              <tr>
+                <th colspan="2">여행지 목록
+                <br/>
+                <ul>
+                {item.tags.map((tag, index) =>(
+                  <li key = {index} style={{listStyleType : "decimal"}}>
+
+                  <span>{tag}</span>
+                  <i id ="column"></i>
+                  </li>
+                ))}
+                  </ul>
+                </th>
+              </tr>
             </thead>
           </table>
           <br/>
@@ -167,23 +181,6 @@ function FindContents() {
           <div>
           </div>
         </GoogleMap>
-        <div className="arrayLo">
-
-        <div>
-        <h1>여행지 목록 </h1>
-        </div>
-
-          <ul>
-          {item.tags.map((tag, index) =>(
-            <li key = {index} style={{listStyleType : "decimal"}}>
-
-            <span>{tag}</span>
-            <i id ="column"></i>
-            </li>
-          ))}
-
-            </ul>
-        </div>
         </Grid.Column>
 
         </Grid.Row>
