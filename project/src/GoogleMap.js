@@ -25,7 +25,7 @@ import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
 Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
-const libraries = ["places"];
+
 const mapContainerStyle = {
   height: "75vh",
   width: "700px",
@@ -42,10 +42,11 @@ const center = {
   lng: 127.074172,
 };
 export default function App(){
+  const libraries = ["places"];
   const { isLoaded, loadError  } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
     libraries,
-    
+
   });
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
@@ -61,8 +62,7 @@ const removeTags = indexToRemove =>{
 function addTags(event, response)
 {
 
-
-  if(event.nb.type === 'click')
+  if(event.domEvent.type === 'click')
   {
 
     setTags((current) =>[...current,response.results[0].formatted_address]);

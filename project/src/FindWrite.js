@@ -28,7 +28,7 @@ import mapStyles from "./mapStyles";
 
 import { Link,BrowserRouter as Router,Switch,Route,Redirect, useHistory  } from "react-router-dom";
 Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
-const libraries = ["places"];
+
 const mapContainerStyle = {
   height: "75vh",
   width: "700px",
@@ -46,7 +46,7 @@ const center = {
 };
 
 function FindWrite(props){
-
+const libraries = ["places"];
   const history = useHistory();
   var [titletext, setTitletext ] = useState("");
   var [contentstext , setContentstext] = useState("");
@@ -54,7 +54,7 @@ function FindWrite(props){
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
     libraries,
-  
+
   });
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);

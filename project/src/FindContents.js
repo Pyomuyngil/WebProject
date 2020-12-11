@@ -14,13 +14,14 @@ import {
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
 
-//Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
-const libraries = ["places"];
+Geocode.setApiKey('AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA');
+
 
 
 
 
 function FindContents() {
+  const libraries = ["places"];
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCJW0JE2A5pXGeZcSRxELosyWoFmJPBCWA',
     libraries,
