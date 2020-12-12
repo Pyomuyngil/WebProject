@@ -40,8 +40,8 @@ function FindContents() {
 
       }, []);
    const mapContainerStyle = {
-     height: "75vh",
-     width: "700px",
+     height: "60vh",
+     width: "600px",
      marginLeft : "50px",
      marginTop : "25px",
    };
@@ -94,7 +94,7 @@ function FindContents() {
           <Grid>
           <Grid.Row>
           <Grid.Column width={8}>
-        <Container text style={{ marginTop: '7em' }}>
+        <Container text style={{ marginTop: '7em'}}>
           <Header as='h1'>
             글 정보
           </Header>
