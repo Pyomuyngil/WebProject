@@ -185,27 +185,28 @@ const onMapClick = React.useCallback((e) => {
       <div>
 
       <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>글쓰기</Header>
+      <Header as='h1'>국내동행찾기 글쓰기 (구글맵을 먼저 첨부)</Header>
       <div class ='ui form'>
       <div class="field">
-      <label>제목</label>
-      <label>구글맵을 먼저 첨부해주세요</label>
+      <h3 style={{ marginTop: '1em' }}>제목</h3>
       <Input fluid id = "titlearea" onChange ={titleHandler}></Input>
       </div>
       <div class="field">
-      <label>내용    <Link to ={{pathname : `GoogleMap`, query : {titletext,contentstext}}}><Button>구글맵첨부</Button></Link></label>
+      <h3 style={{ marginTop: '1em' }}>내용
+      <Link to ={{pathname : `GoogleMap`, query : {titletext,contentstext}}}>
+      <Button style={{ marginLeft: '39em' }}>구글맵첨부</Button></Link></h3>
 
       <textarea id ="contentsarea" rows='20' onChange = {contentsHandler}></textarea>
       </div>
       </div>
 
       <Button.Group>
-      <Button onClick={saveData} positive>Save</Button>
+      <Button onClick={saveData} style={{ marginTop: '1em' }} positive>Save</Button>
 
-      <Button.Or />
+      <Button.Or style={{ marginTop: '1em' }} />
 
       <Link to='/Find'>
-      <Button>Cancel</Button>
+      <Button style={{ marginTop: '1em' }}>Cancel</Button>
       </Link>
       </Button.Group>
 

@@ -81,22 +81,22 @@ const saveData = (e)  =>
     <div>
 
     <Container text style={{ marginTop: '7em' }}>
-    <Header as='h1'>글쓰기</Header>
+    <Header as='h1'>자유게시판 글쓰기</Header>
     <div class ='ui form'>
     <div class="field">
-    <label>제목</label>
+    <h3 style={{ marginTop: '1em' }}>제목</h3>
     <Input fluid id = "titlearea" onChange ={titleHandler}></Input>
     </div>
     <div class="field">
-    <label>내용</label>
+    <h3 style={{ marginTop: '1em' }}>내용</h3>
     <textarea id ="contentsarea" rows='20' onChange = {contentsHandler}></textarea>
     </div>
     </div>
     <Button.Group>
-    <Button onClick={saveData} positive>Save</Button>
-    <Button.Or />
+    <Button onClick={saveData} style={{ marginTop: '1em' }} positive>Save</Button>
+    <Button.Or style={{ marginTop: '1em' }}/>
     <Link to='/FreeBoard'>
-    <Button>Cancel</Button>
+    <Button style={{ marginTop: '1em' }}>Cancel</Button>
     </Link>
     </Button.Group>
 

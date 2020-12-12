@@ -130,7 +130,9 @@ function SendMail(){
     required placeholder="your.name@email.com"></Input>
     </div>
     </div>
-    <button>보내기 (구글)</button>
+    <div>
+    <Button style={{ marginTop: '1em' }} className="ui blue button">보내기 (구글)</Button>
+    </div>
     </Container>
     </div>
     </form>
