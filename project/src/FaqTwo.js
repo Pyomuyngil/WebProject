@@ -6,7 +6,7 @@ const FaqTwo = () => (
   <div>
   <Container text style={{ marginTop: '7em' }}>
     <Header as='h1'>FAQ</Header>
-    <table class="ui selectable inverted table">
+    <table class="ui celled table">
       <thead>
         <tr>
           <th>홈페이지 이용방법은 어떻게 되나요?</th>

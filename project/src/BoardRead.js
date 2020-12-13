@@ -63,7 +63,7 @@ function BoardRead() {
           </Header>
           <div>
 
-          <table class="ui selectable inverted table">
+          <table class="ui celled table">
             <thead>
               <tr>
                 <th>제목 : {item.title}</th>

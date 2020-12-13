@@ -55,43 +55,33 @@ return (
   <Container text style={{ marginTop: '7em' }}>
     <Header as='h1'>국내동행찾기
     <Link to='/FindWrite'>
-      <Button style={{ marginLeft: '29em' }} className="ui blue button">
+      <Button style={{ marginLeft: '31em' }} className="ui blue button">
         글쓰기
       </Button>
       </Link>
     </Header>
+    <div>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>제목</th>
+          <th>작성자</th>
+          <th className="right aligned">날짜</th>
+        </tr>
+      </thead>
+      <tbody>
+      {userdata.map((item) =>{
+        return(
 
-    <div class="ui link cards">
-    {userdata.map((item) =>{
-
-
-
-      return(
-      <div class="card">
-
-        <div class="image">
-
-        <img src={item.url}/>
-
-        </div>
-        <Link to={'/'+item.key}>
-        <div class="content">
-          <div class="header">{item.title}</div>
-        </div>
-        <div class="extra content">
-          <span class="right floated">
-          {item.writeDate}
-          </span>
-          <span>
-          <i class="user icon"></i>
-          {item.email}
-          </span>
-        </div>
-
-        </Link>
-      </div>
-    )
-  })}
+        <tr>
+        <td fix width="55%"><Link to={'/'+item.key}>{item.title}</Link></td>
+        <td width="20%"><Link to={'/'+item.key}>{item.email}</Link></td>
+        <td className="right aligned"><Link to={'/'+item.key}>{item.writeDate}</Link></td>
+        </tr>
+      )
+    })}
+    </tbody>
+    </table>
   </div>
 
 </Container>

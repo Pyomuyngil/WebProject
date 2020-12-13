@@ -197,8 +197,28 @@ const onMapClick = React.useCallback((e) => {
       <Button style={{ marginLeft: '39em' }}>구글맵첨부</Button></Link></h3>
 
       <textarea id ="contentsarea" rows='20' onChange = {contentsHandler}></textarea>
+
       </div>
+
       </div>
+      <h3>여행지 목록 </h3>
+
+      { props.location.query ? (
+
+
+
+                  <ul>
+                  {props.location.query.tags.map((tag, index) =>(
+                    <li key = {index} style={{listStyleType : "decimal"}}>
+
+                    <span>{tag}</span>
+                    <i id ="column">      </i>
+                    </li>
+                  ))}
+                    </ul>
+
+
+        ) : null}
 
       <Button.Group>
       <Button onClick={saveData} style={{ marginTop: '1em' }} positive>Save</Button>
@@ -214,7 +234,17 @@ const onMapClick = React.useCallback((e) => {
 
       </div>
       </Grid.Column>
-<Grid.Column width={4}>
+
+<Grid.Column width={4} >
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
       { props.location.query ? (
 
 <div>
@@ -258,25 +288,6 @@ const onMapClick = React.useCallback((e) => {
         ) : null}
 
       </GoogleMap>
-
-
-      <div className="arrayLo">
-
-
-      <h1>여행지 목록 </h1>
-
-
-                  <ul>
-                  {props.location.query.tags.map((tag, index) =>(
-                    <li key = {index} style={{listStyleType : "decimal"}}>
-
-                    <span>{tag}</span>
-                    <i id ="column">       close</i>
-                    </li>
-                  ))}
-                    </ul>
-
-      </div>
 
 
   </div>

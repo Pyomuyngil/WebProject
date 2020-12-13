@@ -3,11 +3,17 @@ import {Card, Icon, Container, Divider, Dropdown, Grid, Header, Image, Button,
   List,  Menu,  Segment, Pagination, Table} from 'semantic-ui-react'
 import {Link,BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 import fire from './config/fire';
+
 function Homepage(){
 
   const [freeboard , setFreeBoard] = useState([]);
   const [aftertravel, setAfterTravel] = useState([]);
   const [find, setFind] = useState([]);
+  var email;
+  var userId = fire.auth().currentUser;
+  if (userId != null) {
+    var email = userId.email;
+  }
   React.useEffect(() =>{
 
 
@@ -39,7 +45,6 @@ function Homepage(){
           };
 
     },[]);
-
   React.useEffect(() =>{
 
 
@@ -104,8 +109,6 @@ function Homepage(){
         };
   },[]);
 
-
-
   return (
 <div class ='ui form' style={{ marginTop: '8em', marginLeft: '2em' }}>
 <Grid>
@@ -115,12 +118,12 @@ function Homepage(){
       <div class="ui link cards">
         <div class="card">
           <div class="content">
-            <div class="header">'abcd'님 어서오세요!</div>
+            <div class="header">{email}님 <br />어서오세요!</div>
             <div class="meta">
               <a>회원</a>
             </div>
             <div class="description">
-              어서오시라구요 꼴받게하지말고
+              환영합니다.
             </div>
           </div>
         </div>

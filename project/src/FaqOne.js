@@ -6,7 +6,7 @@ const FaqOne = () => (
   <div>
   <Container text style={{ marginTop: '7em' }}>
     <Header as='h1'>FAQ</Header>
-    <table class="ui selectable inverted table">
+    <table class="ui celled table">
       <thead>
         <tr>
           <th>'같이가요'는 어떤 사이트인가요?</th>

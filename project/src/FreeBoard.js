@@ -54,7 +54,7 @@ function FreeBoard(){
             </Link>
           </Header>
           <div>
-          <table className="ui selectable inverted table">
+          <table class="ui celled table">
             <thead>
               <tr>
                 <th>제목</th>

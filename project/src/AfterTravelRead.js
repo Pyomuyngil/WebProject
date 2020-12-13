@@ -35,7 +35,7 @@ function AfterTravelRead(props) {
              {
              if(urlname == childSnapshot.val().key) {
              setTitle(title => [...title, childSnapshot.val(),]);
-            
+
            }
              }
            );
@@ -60,7 +60,7 @@ function AfterTravelRead(props) {
             글 정보
           </Header>
           <div>
-          <table class="ui selectable inverted table">
+          <table class="ui celled table">
             <thead>
               <tr>
                 <th>제목 : {item.title}</th>

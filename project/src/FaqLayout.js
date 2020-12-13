@@ -7,7 +7,7 @@ const FaqLayout = () => (
   <div>
     <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>FAQ</Header>
-      <table class="ui selectable inverted table">
+      <table class="ui celled table">
         <thead>
           <tr>
             <th>번호</th>
