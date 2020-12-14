@@ -21,6 +21,8 @@ function FreeBoard(){
 
     const loadingListener = query.on("value" , snapshot =>
         {
+          setTitle([]);
+    
           snapshot.forEach(function(childSnapshot)
           {
           console.log(childSnapshot);

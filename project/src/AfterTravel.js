@@ -16,6 +16,7 @@ function AfterTravel(){
 
     const loadingListener = query.on("value" , snapshot =>
         {
+          setUserData([]);
           snapshot.forEach(function(childSnapshot)
           {
 
