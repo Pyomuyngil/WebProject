@@ -60,6 +60,12 @@ function BoardRead() {
 
     const loadingListener =  query.once("value" , snapshot =>
         {
+
+        setTitle([]);
+        setContents([]);
+        setDate([]);
+        setEmail([]);
+        setKey([]);  
           snapshot.forEach(function(childSnapshot)
           {
 
@@ -86,6 +92,9 @@ function BoardRead() {
 
       const loadingListenerc =  query.once("value" , snapshot =>
           {
+            setComments([]);
+            setDatec([]);
+            setEmailc([]);
             snapshot.forEach(function(childSnapshot)
             {
             setComments(comments => [...comments, childSnapshot.val(),]);
