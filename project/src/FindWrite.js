@@ -131,6 +131,7 @@ const onMapClick = React.useCallback((e) => {
 
     }
     else {
+
       var title = titletext;
       var contents = contentstext;
       var today = new Date();
@@ -206,7 +207,7 @@ const onMapClick = React.useCallback((e) => {
       { props.location.query ? (
 
 
-
+                  <div>
                   <ul>
                   {props.location.query.tags.map((tag, index) =>(
                     <li key = {index} style={{listStyleType : "decimal"}}>
@@ -216,19 +217,19 @@ const onMapClick = React.useCallback((e) => {
                     </li>
                   ))}
                     </ul>
+                    <Button.Group>
+                    <Button onClick={saveData} style={{ marginTop: '1em' }} positive>Save</Button>
 
+                    <Button.Or style={{ marginTop: '1em' }} />
 
+                    <Link to='/Find'>
+                    <Button style={{ marginTop: '1em' }}>Cancel</Button>
+                    </Link>
+                    </Button.Group>
+                  </div>
         ) : null}
 
-      <Button.Group>
-      <Button onClick={saveData} style={{ marginTop: '1em' }} positive>Save</Button>
 
-      <Button.Or style={{ marginTop: '1em' }} />
-
-      <Link to='/Find'>
-      <Button style={{ marginTop: '1em' }}>Cancel</Button>
-      </Link>
-      </Button.Group>
 
       </Container>
 
