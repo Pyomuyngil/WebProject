@@ -30,8 +30,9 @@ import {
 import {Link, BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 
 function Home(){
-  const [title,setTitle] = useState([]);
-  const [key, setKey] = useState([]);
+  const [freeboard , setFreeBoard] = useState([]);
+  const [aftertravel, setAfterTravel] = useState([]);
+  const [find, setFind] = useState([]);
 
   const [userUid, setUid] = useState([]);
 const libraries = ["places"];
@@ -56,56 +57,61 @@ const libraries = ["places"];
 
     console.log(userUid); // 이게 userUid야 이거 가지고 사용해
 
-    const loadingListener2 = fire.database().ref('여행후기').on("value" , snapshot =>
+    const loadingFind = fire.database().ref('동행게시판').on("value" , async (snapshot) =>
         {
-          snapshot.forEach(function(childSnapshot)
+          setFind([]);
+          await snapshot.forEach(function(childSnapshot)
           {
-          console.log(childSnapshot);
-          setTitle(title => [...title, childSnapshot.val(),]);
-          setKey(key => [...key,childSnapshot.val(),]);
+            setFind(data =>
+              [...data,
+                {
+                title : childSnapshot.val().title,
+                key : childSnapshot.val().key
+                }
+              ]);
           }
         );
-      });
 
-   const loadingListener3 = fire.database().ref('자유게시판').on("value" , snapshot =>
-       {
-         snapshot.forEach(function(childSnapshot)
-         {
+         });
 
-         setTitle(title => [...title, childSnapshot.val(),]);
-         setKey(key => [...key,childSnapshot.val(),]);
-         }
-       );
-     });
+         const loadingFreeBoard = fire.database().ref('자유게시판').on("value" , snapshot =>
+             {
+               snapshot.forEach(function(childSnapshot)
+               {
+                 setFreeBoard(data =>
+                   [...data,
+                     {
+                     title : childSnapshot.val().title,
+                     key : childSnapshot.val().key,
+                     }
+                   ]);
+               }
+             );
+              }
+            );
 
-
-
-
-     const loadingListener4 = fire.database().ref('동행게시판').on("value" , snapshot =>
-         {
-           snapshot.forEach(function(childSnapshot)
-           {
-
-           setTitle(title => [...title, childSnapshot.val(),]);
-           setKey(key => [...key,childSnapshot.val(),]);
-           }
-         );
-       });
+            const loadingAfterTravel = fire.database().ref('여행후기').on("value" , snapshot =>
+                {
+                  snapshot.forEach(function(childSnapshot)
+                  {
+                    setAfterTravel(data =>
+                      [...data,
+                        {
+                        title : childSnapshot.val().title,
+                        key : childSnapshot.val().key,
+                        }
+                      ]);
+                  }
+                );
+                 }
+               );
 
 
       return () => {
-            fire.database().ref('여행후기').off('value', loadingListener2);
-            fire.database().ref('자유게시판').off('value', loadingListener3);
-            fire.database().ref('동행게시판').off('value', loadingListener4);
+            fire.database().ref('여행후기').off('value', loadingAfterTravel);
+            fire.database().ref('자유게시판').off('value', loadingFreeBoard);
+            fire.database().ref('동행게시판').off('value', loadingFind);
           };
-
-
-
-
-
-
-
-
 
 
 
@@ -133,17 +139,17 @@ const libraries = ["places"];
           <Route path ="/ATWrite" component = {ATWrite} />
 
 
-              {title.map((item) =>{
+              {aftertravel.map((item) =>{
                 return(
               <Route path ={'/'+item.key} component = {ATRead} />
             )
           })}
-            {title.map((item) =>{
+            {freeboard.map((item) =>{
               return(
             <Route path ={'/'+item.key} component = {BoardRead} />
           )
         })}
-          {title.map((item) =>{
+          {find.map((item) =>{
           return(
         <Route path ={'/'+item.key} component = {FindContents} />
       )
