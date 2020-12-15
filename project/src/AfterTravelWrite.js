@@ -61,7 +61,7 @@ const saveData = (e)  =>
                 title : title,
                 contents : contents,
                 writeDate : writeDate,
-                url : "https://firebasestorage.googleapis.com/v0/b/gotogether-78a33.appspot.com/o/DJ3IJkDJOgTaL3AUhQMsVEePdKU2%2Fnonono.jpg?alt=media&token=b2794f50-d92f-4ec0-8d58-79ead9fff6fc"
+                url : "https://firebasestorage.googleapis.com/v0/b/gotogether-78a33.appspot.com/o/b6ramRCVpvQ2bKstD38lid292th2%2Fnonono.jpg?alt=media&token=7a5dba41-fd17-4d30-aaba-6d3f1766e376"
               });
 
 

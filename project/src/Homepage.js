@@ -123,7 +123,7 @@ function Homepage(){
               <a>회원</a>
             </div>
             <div class="description">
-              환영합니다.
+              같이가요에 오신것을 환영합니다.
             </div>
           </div>
         </div>
